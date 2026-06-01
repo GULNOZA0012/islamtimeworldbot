@@ -1,12 +1,28 @@
-from telegram.ext import Application, CommandHandler, MessageHandler, filters
+import os
+import threading
+from flask import Flask
+import telebot
 
-async def start(update, context):
-    await update.message.reply_text("Salom!")
+TOKEN = os.getenv("BOT_TOKEN")
 
-def main():
-    app = Application.builder().token("TOKEN").build()
-    app.add_handler(CommandHandler("start", start))
-    app.run_polling()  # ← bu ichida loop o'zi boshqaradi
+bot = telebot.TeleBot(TOKEN)
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "IslamTimeWorldBot is running!"
+
+@bot.message_handler(commands=["start"])
+def start(message):
+    bot.send_message(
+        message.chat.id,
+        "Assalomu alaykum!\n\nIslamTimeWorldBot ishlayapti ✅"
+    )
+
+def run_flask():
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
 
 if __name__ == "__main__":
-    main()
+    threading.Thread(target=run_flask).start()
+    bot.infinity_polling(skip_pending=True)
