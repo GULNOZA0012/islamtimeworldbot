@@ -14,10 +14,19 @@ def home():
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    bot.send_message(
-        message.chat.id,
-        "Assalomu alaykum!\n\nIslamTimeWorldBot ishlayapti ✅"
-    )
+    text = """
+🕌 Assalomu alaykum!
+
+Islam Time World Botga xush kelibsiz.
+
+1️⃣ Namoz vaqtlari
+2️⃣ Qibla yo‘nalishi
+3️⃣ Yaqin masjidlar
+4️⃣ Qur'on
+5️⃣ Hadislar
+6️⃣ Til tanlash
+"""
+    bot.send_message(message.chat.id, text)
 
 def run_flask():
     port = int(os.environ.get("PORT", 10000))
