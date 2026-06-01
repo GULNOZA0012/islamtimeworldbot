@@ -1,16 +1,12 @@
-import os
-from telegram import Update
-from telegram.ext import Application, CommandHandler, ContextTypes
+from telegram.ext import Application, CommandHandler, MessageHandler, filters
 
-TOKEN = os.getenv("BOT_TOKEN")
-
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Assalomu alaykum! IslamTimeWorldBot ishlayapti ✅")
+async def start(update, context):
+    await update.message.reply_text("Salom!")
 
 def main():
-    app = Application.builder().token(TOKEN).build()
+    app = Application.builder().token("TOKEN").build()
     app.add_handler(CommandHandler("start", start))
-    app.run_polling()
+    app.run_polling()  # ← bu ichida loop o'zi boshqaradi
 
 if __name__ == "__main__":
     main()
