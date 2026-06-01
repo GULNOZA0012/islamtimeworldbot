@@ -62,6 +62,36 @@ def uzbek(message):
         "🇺🇿 O'zbek tili tanlandi.\n\nKerakli bo'limni tanlang:",
         reply_markup=markup
     )
+    @bot.message_handler(func=lambda message: message.text == "🕌 Namoz vaqtlari")
+def prayer_times(message):
+    markup = types.ReplyKeyboardMarkup(
+        resize_keyboard=True,
+        one_time_keyboard=True
+    )
+
+    location_btn = types.KeyboardButton(
+        "📍 Lokatsiyani yuborish",
+        request_location=True
+    )
+
+    markup.add(location_btn)
+
+    bot.send_message(
+        message.chat.id,
+        "📍 Namoz vaqtlarini hisoblash uchun hozirgi lokatsiyangizni yuboring.",
+        reply_markup=markup
+    )
+
+
+@bot.message_handler(content_types=["location"])
+def location_handler(message):
+    lat = message.location.latitude
+    lon = message.location.longitude
+
+    bot.send_message(
+        message.chat.id,
+        f"✅ Lokatsiya qabul qilindi.\n\nLatitude: {lat}\nLongitude: {lon}"
+    )
 def run_flask():
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
