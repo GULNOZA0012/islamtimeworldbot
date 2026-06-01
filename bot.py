@@ -42,9 +42,25 @@ Please select your language:
     )
 @bot.message_handler(func=lambda message: message.text == "🇺🇿 O'zbekcha")
 def uzbek(message):
+
+    markup = types.ReplyKeyboardMarkup(
+        resize_keyboard=True,
+        row_width=2
+    )
+
+    markup.add(
+        "🕌 Namoz vaqtlari",
+        "🧭 Qibla",
+        "📍 Yaqin masjidlar",
+        "📖 Qur'on",
+        "📚 Hadislar",
+        "⚙️ Sozlamalar"
+    )
+
     bot.send_message(
         message.chat.id,
-        "🇺🇿 O'zbek tili tanlandi."
+        "🇺🇿 O'zbek tili tanlandi.\n\nKerakli bo'limni tanlang:",
+        reply_markup=markup
     )
 def run_flask():
     port = int(os.environ.get("PORT", 10000))
