@@ -35,14 +35,11 @@ Please select your language:
         "🇰🇬 Кыргызча", "🇹🇯 Тоҷикӣ"
     )
 
-    bot.send_message(
-        message.chat.id,
-        text,
-        reply_markup=markup
-    )
+    bot.send_message(message.chat.id, text, reply_markup=markup)
+
+
 @bot.message_handler(func=lambda message: message.text == "🇺🇿 O'zbekcha")
 def uzbek(message):
-
     markup = types.ReplyKeyboardMarkup(
         resize_keyboard=True,
         row_width=2
@@ -62,7 +59,9 @@ def uzbek(message):
         "🇺🇿 O'zbek tili tanlandi.\n\nKerakli bo'limni tanlang:",
         reply_markup=markup
     )
-    @bot.message_handler(func=lambda message: message.text == "🕌 Namoz vaqtlari")
+
+
+@bot.message_handler(func=lambda message: message.text == "🕌 Namoz vaqtlari")
 def prayer_times(message):
     markup = types.ReplyKeyboardMarkup(
         resize_keyboard=True,
@@ -92,9 +91,12 @@ def location_handler(message):
         message.chat.id,
         f"✅ Lokatsiya qabul qilindi.\n\nLatitude: {lat}\nLongitude: {lon}"
     )
+
+
 def run_flask():
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
+
 
 if __name__ == "__main__":
     threading.Thread(target=run_flask).start()
