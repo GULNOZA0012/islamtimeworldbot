@@ -25,8 +25,24 @@ Islam Time World Botga xush kelibsiz.
 4️⃣ Qur'on
 5️⃣ Hadislar
 6️⃣ Til tanlash
-"""
-    bot.send_message(message.chat.id, text)
+""" markup = types.ReplyKeyboardMarkup(
+        resize_keyboard=True,
+        row_width=2
+    )
+
+    markup.add(
+        "🇺🇿 O'zbekcha", "🇷🇺 Русский",
+        "🇬🇧 English", "🇸🇦 العربية",
+        "🇹🇷 Türkçe", "🇩🇪 Deutsch",
+        "🇫🇷 Français", "🇪🇸 Español",
+        "🇮🇹 Italiano", "🇰🇿 Қазақша",
+        "🇰🇬 Кыргызча", "🇹🇯 Тоҷикӣ"
+    )
+bot.send_message(
+    message.chat.id,
+    text,
+    reply_markup=markup
+)
 
 def run_flask():
     port = int(os.environ.get("PORT", 10000))
