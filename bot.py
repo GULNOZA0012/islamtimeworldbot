@@ -47,7 +47,12 @@ Islam Time World Botga xush kelibsiz.
         text,
         reply_markup=markup
     )
-
+@bot.message_handler(func=lambda message: message.text == "🇺🇿 O'zbekcha")
+def uzbek(message):
+    bot.send_message(
+        message.chat.id,
+        "🇺🇿 O'zbek tili tanlandi."
+    )
 def run_flask():
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
