@@ -9,10 +9,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Assalomu alaykum!\n\nIslamTimeWorldBot ga xush kelibsiz."
     )
 
-def main():
-    app = Application.builder().token(TOKEN).build()
-    app.add_handler(CommandHandler("start", start))
-    app.run_polling()
+app = Application.builder().token(TOKEN).build()
+app.add_handler(CommandHandler("start", start))
 
 if __name__ == "__main__":
-    main()
+    app.run_polling()
