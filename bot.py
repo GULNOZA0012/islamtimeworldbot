@@ -25,7 +25,8 @@ Islam Time World Botga xush kelibsiz.
 4️⃣ Qur'on
 5️⃣ Hadislar
 6️⃣ Til tanlash
-""" markup = types.ReplyKeyboardMarkup(
+""" 
+    markup = types.ReplyKeyboardMarkup(
         resize_keyboard=True,
         row_width=2
     )
