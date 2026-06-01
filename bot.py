@@ -16,16 +16,9 @@ def home():
 @bot.message_handler(commands=["start"])
 def start(message):
     text = """
-🕌 Assalomu alaykum!
+🌍 Welcome to Islam Time World
 
-Islam Time World Botga xush kelibsiz.
-
-1️⃣ Namoz vaqtlari
-2️⃣ Qibla yo‘nalishi
-3️⃣ Yaqin masjidlar
-4️⃣ Qur'on
-5️⃣ Hadislar
-6️⃣ Til tanlash
+Please select your language:
 """
 
     markup = types.ReplyKeyboardMarkup(
