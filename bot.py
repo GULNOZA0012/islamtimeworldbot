@@ -3,6 +3,7 @@ import threading
 from flask import Flask
 import telebot
 from telebot import types
+
 TOKEN = os.getenv("BOT_TOKEN")
 
 bot = telebot.TeleBot(TOKEN)
@@ -25,7 +26,8 @@ Islam Time World Botga xush kelibsiz.
 4️⃣ Qur'on
 5️⃣ Hadislar
 6️⃣ Til tanlash
-""" 
+"""
+
     markup = types.ReplyKeyboardMarkup(
         resize_keyboard=True,
         row_width=2
@@ -39,11 +41,12 @@ Islam Time World Botga xush kelibsiz.
         "🇮🇹 Italiano", "🇰🇿 Қазақша",
         "🇰🇬 Кыргызча", "🇹🇯 Тоҷикӣ"
     )
-bot.send_message(
-    message.chat.id,
-    text,
-    reply_markup=markup
-)
+
+    bot.send_message(
+        message.chat.id,
+        text,
+        reply_markup=markup
+    )
 
 def run_flask():
     port = int(os.environ.get("PORT", 10000))
