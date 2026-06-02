@@ -177,6 +177,126 @@ HADITH_QUOTES = [
     {
         "text": "Kim bomdod namozini o‘qisa, Allohning himoyasida bo‘ladi.",
         "source": "Sahih Muslim, 657a"
+    },
+    {
+        "text": "Amallar niyatlarga bog‘liqdir.",
+        "source": "Sahih Buxoriy, 1"
+    },
+    {
+        "text": "Musulmon — boshqa musulmonlar uning tili va qo‘lidan omonda bo‘lgan kishidir.",
+        "source": "Sahih Buxoriy, 10"
+    },
+    {
+        "text": "Sizlardan hech biringiz o‘zi uchun yaxshi ko‘rgan narsani birodari uchun ham yaxshi ko‘rmaguncha to‘liq mo‘min bo‘la olmaydi.",
+        "source": "Sahih Buxoriy, 13"
+    },
+    {
+        "text": "Kim Allohga va oxirat kuniga iymon keltirgan bo‘lsa, yaxshi gapirsin yoki sukut qilsin.",
+        "source": "Sahih Buxoriy, 6018"
+    },
+    {
+        "text": "Poklik iymonning yarmidir.",
+        "source": "Sahih Muslim, 223"
+    },
+    {
+        "text": "Namoz nurdir.",
+        "source": "Sahih Muslim, 223"
+    },
+    {
+        "text": "Sabr ziyodir.",
+        "source": "Sahih Muslim, 223"
+    },
+    {
+        "text": "Qur’on sening foydangga yoki zararingga hujjat bo‘ladi.",
+        "source": "Sahih Muslim, 223"
+    },
+    {
+        "text": "Sizlarning eng yaxshilaringiz Qur’onni o‘rganib, uni boshqalarga o‘rgatganlaringizdir.",
+        "source": "Sahih Buxoriy, 5027"
+    },
+    {
+        "text": "Jamoat bilan o‘qilgan namoz yolg‘iz o‘qilgan namozdan yigirma yetti daraja afzaldir.",
+        "source": "Sahih Buxoriy, 645"
+    },
+    {
+        "text": "Rahm qilmagan kishiga rahm qilinmaydi.",
+        "source": "Sahih Buxoriy, 5997"
+    },
+    {
+        "text": "Alloh go‘zaldir va go‘zallikni sevadi.",
+        "source": "Sahih Muslim, 91a"
+    },
+    {
+        "text": "Alloh mehribon va yumshoqlikni sevadi.",
+        "source": "Sahih Muslim, 2593"
+    },
+    {
+        "text": "Alloh sizlarning suratlaringizga va mol-dunyolaringizga emas, qalblaringiz va amallaringizga qaraydi.",
+        "source": "Sahih Muslim, 2564"
+    },
+    {
+        "text": "Halol aniq, harom ham aniqdir.",
+        "source": "Sahih Buxoriy, 52"
+    },
+    {
+        "text": "Musulmon musulmonning birodaridir.",
+        "source": "Sahih Buxoriy, 2442"
+    },
+    {
+        "text": "Kim birodarining hojatini chiqarsa, Alloh uning hojatini chiqaradi.",
+        "source": "Sahih Buxoriy, 2442"
+    },
+    {
+        "text": "Kim musulmonning bir g‘amini ketkazsa, Alloh qiyomat kuni uning g‘amlaridan birini ketkazadi.",
+        "source": "Sahih Buxoriy, 2442"
+    },
+    {
+        "text": "Kim bir musulmonning aybini yopsa, Alloh qiyomat kuni uning aybini yopadi.",
+        "source": "Sahih Buxoriy, 2442"
+    },
+    {
+        "text": "Kim ilm izlash yo‘liga kirsa, Alloh unga jannat yo‘lini oson qiladi.",
+        "source": "Sahih Muslim, 2699"
+    },
+    {
+        "text": "Kim bir mo‘minning dunyo g‘amlaridan birini yengillatsa, Alloh uning qiyomat kunidagi g‘amlaridan birini yengillatadi.",
+        "source": "Sahih Muslim, 2699"
+    },
+    {
+        "text": "Kim qiynalgan kishiga yengillik qilsa, Alloh unga dunyo va oxiratda yengillik qiladi.",
+        "source": "Sahih Muslim, 2699"
+    },
+    {
+        "text": "Alloh banda birodariga yordam berar ekan, bandaga yordam berishda davom etadi.",
+        "source": "Sahih Muslim, 2699"
+    },
+    {
+        "text": "Qarindoshlik aloqasini bog‘lagan kishining rizqi kengayadi va umri barakali bo‘ladi.",
+        "source": "Sahih Buxoriy, 5986"
+    },
+    {
+        "text": "Kim menga ikki jag‘i orasidagi narsani va ikki oyog‘i orasidagi narsani kafolat qilsa, men unga jannatni kafolat qilaman.",
+        "source": "Sahih Buxoriy, 6474"
+    },
+    {
+        "text": "Allohga eng sevimli amal oz bo‘lsa ham davomli bo‘lgan amaldir.",
+        "source": "Sahih Buxoriy, 6464"
+    },
+    {
+        "text": "Mo‘minning ishi ajablanarlidir: uning har bir holatida yaxshilik bor.",
+        "source": "Sahih Muslim, 2999"
+    },
+    {
+        "text": "Kuchli mo‘min Allohga zaif mo‘mindan ko‘ra yaxshiroq va suyukliroqdir.",
+        "source": "Sahih Muslim, 2664"
+    },
+    {
+        "text": "Haqiqiy kuchli kishi kurashda yenggan emas, g‘azab paytida o‘zini tutgan kishidir.",
+        "source": "Sahih Buxoriy, 6114"
+    },
+    {
+        "text": "Ikki kalima bor: tilga yengil, tarozida og‘ir va Rahmonga suyuklidir.",
+        "source": "Sahih Buxoriy, 6682; Sahih Muslim, 2694"
     }
 ]
 
