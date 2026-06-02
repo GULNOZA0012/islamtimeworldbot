@@ -1,7 +1,6 @@
 import os
 import threading
 import requests
-import random
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from flask import Flask
@@ -15,295 +14,113 @@ app = Flask(__name__)
 
 
 QURAN_QUOTES = [
-    {
-        "text": "Albatta, namoz mo‘minlarga vaqtida farz qilingandir.",
-        "source": "An-Niso, 103-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Namozlarni va ayniqsa o‘rta namozni saqlanglar.",
-        "source": "Baqara, 238-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Meni zikr qilish uchun namozni to‘kis ado et.",
-        "source": "Toha, 14-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Albatta, namoz fahsh va munkar ishlardan qaytaradi.",
-        "source": "Ankabut, 45-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Robbingizdan yordamni sabr va namoz bilan so‘ranglar.",
-        "source": "Baqara, 45-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Albatta, Alloh sabr qiluvchilar bilan birgadir.",
-        "source": "Baqara, 153-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Alloh taqvodorlarni sevadi.",
-        "source": "Oli Imron, 76-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Alloh tavba qiluvchilarni sevadi.",
-        "source": "Baqara, 222-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Meni eslanglar, Men ham sizlarni eslayman.",
-        "source": "Baqara, 152-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Albatta, Alloh yaxshilik qiluvchilarni sevadi.",
-        "source": "Baqara, 195-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Albatta, qiyinchilik bilan birga yengillik bordir.",
-        "source": "Sharh, 6-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Faqat Allohni zikr qilish bilan qalblar taskin topadi.",
-        "source": "Ra'd, 28-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Kim Allohga tavakkal qilsa, U unga kifoya qiladi.",
-        "source": "Taloq, 3-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Albatta, Alloh adolatni va yaxshilikni buyuradi.",
-        "source": "Nahl, 90-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Alloh isrof qiluvchilarni sevmaydi.",
-        "source": "A'rof, 31-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Alloh sabr qiluvchilarning ajrini zoye qilmaydi.",
-        "source": "Hud, 115-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Rahmatim har narsani qamrab olgandir.",
-        "source": "A'rof, 156-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Yaxshilik qilinglar, shoyad najot topsangizlar.",
-        "source": "Haj, 77-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Duo qilinglar, Men ijobat qilaman.",
-        "source": "G'ofir, 60-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Albatta, Alloh bilan ahd qilganlarga ajr bordir.",
-        "source": "Fath, 10-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Alloh sizlar uchun yengillikni xohlaydi.",
-        "source": "Baqara, 185-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Albatta, Alloh zulm qilmaydi.",
-        "source": "Yunus, 44-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Har bir jon o‘limni totuvchidir.",
-        "source": "Oli Imron, 185-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Yaxshilik va taqvoda hamkorlik qilinglar.",
-        "source": "Moida, 2-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Alloh bilan birga bo‘linglar.",
-        "source": "Tavba, 119-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Albatta, Alloh shukr qiluvchilarni mukofotlaydi.",
-        "source": "Oli Imron, 144-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Kim bir yaxshilik qilsa, o‘n barobar mukofot oladi.",
-        "source": "An'om, 160-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Allohning rahmatidan noumid bo‘lmanglar.",
-        "source": "Zumar, 53-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Rabbingiz mag‘firati tomon shoshilinglar.",
-        "source": "Oli Imron, 133-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Albatta, Alloh mo‘minlarning do‘stidir.",
-        "source": "Oli Imron, 68-oyat",
-        "note": "Qisqa mazmun"
-    },
-    {
-        "text": "Albatta, Alloh bilan bo‘lganlar g‘olib bo‘ladilar.",
-        "source": "Moida, 56-oyat",
-        "note": "Qisqa mazmun"
-    }
+    {"text": "Albatta, namoz mo‘minlarga vaqtida farz qilingandir.", "source": "An-Niso, 103-oyat", "note": "Qisqa mazmun"},
+    {"text": "Namozlarni va ayniqsa o‘rta namozni saqlanglar.", "source": "Baqara, 238-oyat", "note": "Qisqa mazmun"},
+    {"text": "Meni zikr qilish uchun namozni to‘kis ado et.", "source": "Toha, 14-oyat", "note": "Qisqa mazmun"},
+    {"text": "Albatta, namoz fahsh va munkar ishlardan qaytaradi.", "source": "Ankabut, 45-oyat", "note": "Qisqa mazmun"},
+    {"text": "Robbingizdan yordamni sabr va namoz bilan so‘ranglar.", "source": "Baqara, 45-oyat", "note": "Qisqa mazmun"},
+    {"text": "Albatta, Alloh sabr qiluvchilar bilan birgadir.", "source": "Baqara, 153-oyat", "note": "Qisqa mazmun"},
+    {"text": "Alloh taqvodorlarni sevadi.", "source": "Oli Imron, 76-oyat", "note": "Qisqa mazmun"},
+    {"text": "Alloh tavba qiluvchilarni sevadi.", "source": "Baqara, 222-oyat", "note": "Qisqa mazmun"},
+    {"text": "Meni eslanglar, Men ham sizlarni eslayman.", "source": "Baqara, 152-oyat", "note": "Qisqa mazmun"},
+    {"text": "Albatta, Alloh yaxshilik qiluvchilarni sevadi.", "source": "Baqara, 195-oyat", "note": "Qisqa mazmun"},
+    {"text": "Albatta, qiyinchilik bilan birga yengillik bordir.", "source": "Sharh, 6-oyat", "note": "Qisqa mazmun"},
+    {"text": "Faqat Allohni zikr qilish bilan qalblar taskin topadi.", "source": "Ra'd, 28-oyat", "note": "Qisqa mazmun"},
+    {"text": "Kim Allohga tavakkal qilsa, U unga kifoya qiladi.", "source": "Taloq, 3-oyat", "note": "Qisqa mazmun"},
+    {"text": "Albatta, Alloh adolatni va yaxshilikni buyuradi.", "source": "Nahl, 90-oyat", "note": "Qisqa mazmun"},
+    {"text": "Alloh isrof qiluvchilarni sevmaydi.", "source": "A'rof, 31-oyat", "note": "Qisqa mazmun"},
+    {"text": "Alloh sabr qiluvchilarning ajrini zoye qilmaydi.", "source": "Hud, 115-oyat", "note": "Qisqa mazmun"},
+    {"text": "Rahmatim har narsani qamrab olgandir.", "source": "A'rof, 156-oyat", "note": "Qisqa mazmun"},
+    {"text": "Yaxshilik qilinglar, shoyad najot topsangizlar.", "source": "Haj, 77-oyat", "note": "Qisqa mazmun"},
+    {"text": "Duo qilinglar, Men ijobat qilaman.", "source": "G'ofir, 60-oyat", "note": "Qisqa mazmun"},
+    {"text": "Albatta, Alloh bilan ahd qilganlarga ajr bordir.", "source": "Fath, 10-oyat", "note": "Qisqa mazmun"},
+    {"text": "Alloh sizlar uchun yengillikni xohlaydi.", "source": "Baqara, 185-oyat", "note": "Qisqa mazmun"},
+    {"text": "Albatta, Alloh zulm qilmaydi.", "source": "Yunus, 44-oyat", "note": "Qisqa mazmun"},
+    {"text": "Har bir jon o‘limni totuvchidir.", "source": "Oli Imron, 185-oyat", "note": "Qisqa mazmun"},
+    {"text": "Yaxshilik va taqvoda hamkorlik qilinglar.", "source": "Moida, 2-oyat", "note": "Qisqa mazmun"},
+    {"text": "Alloh bilan birga bo‘linglar.", "source": "Tavba, 119-oyat", "note": "Qisqa mazmun"},
+    {"text": "Albatta, Alloh shukr qiluvchilarni mukofotlaydi.", "source": "Oli Imron, 144-oyat", "note": "Qisqa mazmun"},
+    {"text": "Kim bir yaxshilik qilsa, o‘n barobar mukofot oladi.", "source": "An'om, 160-oyat", "note": "Qisqa mazmun"},
+    {"text": "Allohning rahmatidan noumid bo‘lmanglar.", "source": "Zumar, 53-oyat", "note": "Qisqa mazmun"},
+    {"text": "Rabbingiz mag‘firati tomon shoshilinglar.", "source": "Oli Imron, 133-oyat", "note": "Qisqa mazmun"},
+    {"text": "Albatta, Alloh mo‘minlarning do‘stidir.", "source": "Oli Imron, 68-oyat", "note": "Qisqa mazmun"},
+    {"text": "Albatta, Alloh bilan bo‘lganlar g‘olib bo‘ladilar.", "source": "Moida, 56-oyat", "note": "Qisqa mazmun"},
 ]
 
 
 HADITH_QUOTES = [
-    {
-        "text": "Kim bomdod namozini o‘qisa, Allohning himoyasida bo‘ladi.",
-        "source": "Sahih Muslim, 657a"
-    },
-    {
-        "text": "Amallar niyatlarga bog‘liqdir.",
-        "source": "Sahih Buxoriy, 1"
-    },
-    {
-        "text": "Musulmon — boshqa musulmonlar uning tili va qo‘lidan omonda bo‘lgan kishidir.",
-        "source": "Sahih Buxoriy, 10"
-    },
-    {
-        "text": "Sizlardan hech biringiz o‘zi uchun yaxshi ko‘rgan narsani birodari uchun ham yaxshi ko‘rmaguncha to‘liq mo‘min bo‘la olmaydi.",
-        "source": "Sahih Buxoriy, 13"
-    },
-    {
-        "text": "Kim Allohga va oxirat kuniga iymon keltirgan bo‘lsa, yaxshi gapirsin yoki sukut qilsin.",
-        "source": "Sahih Buxoriy, 6018"
-    },
-    {
-        "text": "Poklik iymonning yarmidir.",
-        "source": "Sahih Muslim, 223"
-    },
-    {
-        "text": "Namoz nurdir.",
-        "source": "Sahih Muslim, 223"
-    },
-    {
-        "text": "Sabr ziyodir.",
-        "source": "Sahih Muslim, 223"
-    },
-    {
-        "text": "Qur’on sening foydangga yoki zararingga hujjat bo‘ladi.",
-        "source": "Sahih Muslim, 223"
-    },
-    {
-        "text": "Sizlarning eng yaxshilaringiz Qur’onni o‘rganib, uni boshqalarga o‘rgatganlaringizdir.",
-        "source": "Sahih Buxoriy, 5027"
-    },
-    {
-        "text": "Jamoat bilan o‘qilgan namoz yolg‘iz o‘qilgan namozdan yigirma yetti daraja afzaldir.",
-        "source": "Sahih Buxoriy, 645"
-    },
-    {
-        "text": "Rahm qilmagan kishiga rahm qilinmaydi.",
-        "source": "Sahih Buxoriy, 5997"
-    },
-    {
-        "text": "Alloh go‘zaldir va go‘zallikni sevadi.",
-        "source": "Sahih Muslim, 91a"
-    },
-    {
-        "text": "Alloh mehribon va yumshoqlikni sevadi.",
-        "source": "Sahih Muslim, 2593"
-    },
-    {
-        "text": "Alloh sizlarning suratlaringizga va mol-dunyolaringizga emas, qalblaringiz va amallaringizga qaraydi.",
-        "source": "Sahih Muslim, 2564"
-    },
-    {
-        "text": "Halol aniq, harom ham aniqdir.",
-        "source": "Sahih Buxoriy, 52"
-    },
-    {
-        "text": "Musulmon musulmonning birodaridir.",
-        "source": "Sahih Buxoriy, 2442"
-    },
-    {
-        "text": "Kim birodarining hojatini chiqarsa, Alloh uning hojatini chiqaradi.",
-        "source": "Sahih Buxoriy, 2442"
-    },
-    {
-        "text": "Kim musulmonning bir g‘amini ketkazsa, Alloh qiyomat kuni uning g‘amlaridan birini ketkazadi.",
-        "source": "Sahih Buxoriy, 2442"
-    },
-    {
-        "text": "Kim bir musulmonning aybini yopsa, Alloh qiyomat kuni uning aybini yopadi.",
-        "source": "Sahih Buxoriy, 2442"
-    },
-    {
-        "text": "Kim ilm izlash yo‘liga kirsa, Alloh unga jannat yo‘lini oson qiladi.",
-        "source": "Sahih Muslim, 2699"
-    },
-    {
-        "text": "Kim bir mo‘minning dunyo g‘amlaridan birini yengillatsa, Alloh uning qiyomat kunidagi g‘amlaridan birini yengillatadi.",
-        "source": "Sahih Muslim, 2699"
-    },
-    {
-        "text": "Kim qiynalgan kishiga yengillik qilsa, Alloh unga dunyo va oxiratda yengillik qiladi.",
-        "source": "Sahih Muslim, 2699"
-    },
-    {
-        "text": "Alloh banda birodariga yordam berar ekan, bandaga yordam berishda davom etadi.",
-        "source": "Sahih Muslim, 2699"
-    },
-    {
-        "text": "Qarindoshlik aloqasini bog‘lagan kishining rizqi kengayadi va umri barakali bo‘ladi.",
-        "source": "Sahih Buxoriy, 5986"
-    },
-    {
-        "text": "Kim menga ikki jag‘i orasidagi narsani va ikki oyog‘i orasidagi narsani kafolat qilsa, men unga jannatni kafolat qilaman.",
-        "source": "Sahih Buxoriy, 6474"
-    },
-    {
-        "text": "Allohga eng sevimli amal oz bo‘lsa ham davomli bo‘lgan amaldir.",
-        "source": "Sahih Buxoriy, 6464"
-    },
-    {
-        "text": "Mo‘minning ishi ajablanarlidir: uning har bir holatida yaxshilik bor.",
-        "source": "Sahih Muslim, 2999"
-    },
-    {
-        "text": "Kuchli mo‘min Allohga zaif mo‘mindan ko‘ra yaxshiroq va suyukliroqdir.",
-        "source": "Sahih Muslim, 2664"
-    },
-    {
-        "text": "Haqiqiy kuchli kishi kurashda yenggan emas, g‘azab paytida o‘zini tutgan kishidir.",
-        "source": "Sahih Buxoriy, 6114"
-    },
-    {
-        "text": "Ikki kalima bor: tilga yengil, tarozida og‘ir va Rahmonga suyuklidir.",
-        "source": "Sahih Buxoriy, 6682; Sahih Muslim, 2694"
-    }
+    {"text": "Kim bomdod namozini o‘qisa, Allohning himoyasida bo‘ladi.", "source": "Sahih Muslim, 657a"},
+    {"text": "Amallar niyatlarga bog‘liqdir.", "source": "Sahih Buxoriy, 1"},
+    {"text": "Musulmon — boshqa musulmonlar uning tili va qo‘lidan omonda bo‘lgan kishidir.", "source": "Sahih Buxoriy, 10"},
+    {"text": "Sizlardan hech biringiz o‘zi uchun yaxshi ko‘rgan narsani birodari uchun ham yaxshi ko‘rmaguncha to‘liq mo‘min bo‘la olmaydi.", "source": "Sahih Buxoriy, 13"},
+    {"text": "Kim Allohga va oxirat kuniga iymon keltirgan bo‘lsa, yaxshi gapirsin yoki sukut qilsin.", "source": "Sahih Buxoriy, 6018"},
+    {"text": "Poklik iymonning yarmidir.", "source": "Sahih Muslim, 223"},
+    {"text": "Namoz nurdir.", "source": "Sahih Muslim, 223"},
+    {"text": "Sabr ziyodir.", "source": "Sahih Muslim, 223"},
+    {"text": "Qur’on sening foydangga yoki zararingga hujjat bo‘ladi.", "source": "Sahih Muslim, 223"},
+    {"text": "Sizlarning eng yaxshilaringiz Qur’onni o‘rganib, uni boshqalarga o‘rgatganlaringizdir.", "source": "Sahih Buxoriy, 5027"},
+    {"text": "Jamoat bilan o‘qilgan namoz yolg‘iz o‘qilgan namozdan yigirma yetti daraja afzaldir.", "source": "Sahih Buxoriy, 645"},
+    {"text": "Rahm qilmagan kishiga rahm qilinmaydi.", "source": "Sahih Buxoriy, 5997"},
+    {"text": "Alloh go‘zaldir va go‘zallikni sevadi.", "source": "Sahih Muslim, 91a"},
+    {"text": "Alloh mehribon va yumshoqlikni sevadi.", "source": "Sahih Muslim, 2593"},
+    {"text": "Alloh sizlarning suratlaringizga va mol-dunyolaringizga emas, qalblaringiz va amallaringizga qaraydi.", "source": "Sahih Muslim, 2564"},
+    {"text": "Halol aniq, harom ham aniqdir.", "source": "Sahih Buxoriy, 52"},
+    {"text": "Musulmon musulmonning birodaridir.", "source": "Sahih Buxoriy, 2442"},
+    {"text": "Kim birodarining hojatini chiqarsa, Alloh uning hojatini chiqaradi.", "source": "Sahih Buxoriy, 2442"},
+    {"text": "Kim musulmonning bir g‘amini ketkazsa, Alloh qiyomat kuni uning g‘amlaridan birini ketkazadi.", "source": "Sahih Buxoriy, 2442"},
+    {"text": "Kim bir musulmonning aybini yopsa, Alloh qiyomat kuni uning aybini yopadi.", "source": "Sahih Buxoriy, 2442"},
+    {"text": "Kim ilm izlash yo‘liga kirsa, Alloh unga jannat yo‘lini oson qiladi.", "source": "Sahih Muslim, 2699"},
+    {"text": "Kim bir mo‘minning dunyo g‘amlaridan birini yengillatsa, Alloh uning qiyomat kunidagi g‘amlaridan birini yengillatadi.", "source": "Sahih Muslim, 2699"},
+    {"text": "Kim qiynalgan kishiga yengillik qilsa, Alloh unga dunyo va oxiratda yengillik qiladi.", "source": "Sahih Muslim, 2699"},
+    {"text": "Alloh banda birodariga yordam berar ekan, bandaga yordam berishda davom etadi.", "source": "Sahih Muslim, 2699"},
+    {"text": "Qarindoshlik aloqasini bog‘lagan kishining rizqi kengayadi va umri barakali bo‘ladi.", "source": "Sahih Buxoriy, 5986"},
+    {"text": "Kim menga ikki jag‘i orasidagi narsani va ikki oyog‘i orasidagi narsani kafolat qilsa, men unga jannatni kafolat qilaman.", "source": "Sahih Buxoriy, 6474"},
+    {"text": "Allohga eng sevimli amal oz bo‘lsa ham davomli bo‘lgan amaldir.", "source": "Sahih Buxoriy, 6464"},
+    {"text": "Mo‘minning ishi ajablanarlidir: uning har bir holatida yaxshilik bor.", "source": "Sahih Muslim, 2999"},
+    {"text": "Kuchli mo‘min Allohga zaif mo‘mindan ko‘ra yaxshiroq va suyukliroqdir.", "source": "Sahih Muslim, 2664"},
+    {"text": "Haqiqiy kuchli kishi kurashda yenggan emas, g‘azab paytida o‘zini tutgan kishidir.", "source": "Sahih Buxoriy, 6114"},
+    {"text": "Ikki kalima bor: tilga yengil, tarozida og‘ir va Rahmonga suyuklidir.", "source": "Sahih Buxoriy, 6682; Sahih Muslim, 2694"},
 ]
 
 
 @app.route("/")
 def home():
     return "IslamTimeWorldBot is running!"
+
+
+def language_menu():
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+    markup.add(
+        "🇺🇿 O'zbekcha", "🇷🇺 Русский",
+        "🇬🇧 English", "🇸🇦 العربية",
+        "🇹🇷 Türkçe", "🇩🇪 Deutsch",
+        "🇫🇷 Français", "🇪🇸 Español",
+        "🇮🇹 Italiano", "🇰🇿 Қазақша",
+        "🇰🇬 Кыргызча", "🇹🇯 Тоҷикӣ"
+    )
+    return markup
+
+
+def main_menu():
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+    markup.add(
+        "🕌 Namoz vaqtlari",
+        "🧭 Qibla",
+        "📍 Yaqin masjidlar",
+        "📖 Qur'on",
+        "📚 Hadislar",
+        "📿 Duolar",
+        "🕋 99 Ism",
+        "📅 Hijriy taqvim",
+        "⚙️ Sozlamalar"
+    )
+    return markup
+
+
+def back_menu():
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+    markup.add("⬅️ Orqaga", "🏠 Asosiy menyu")
+    return markup
 
 
 def get_location_name(lat, lon):
@@ -321,7 +138,6 @@ def get_location_name(lat, lon):
 
         response = requests.get(url, params=params, headers=headers, timeout=10)
         data = response.json()
-
         address = data.get("address", {})
 
         city = (
@@ -346,49 +162,37 @@ def get_location_name(lat, lon):
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    text = """
-🌍 Welcome to Islam Time World
-
-Please select your language:
-"""
-
-    markup = types.ReplyKeyboardMarkup(
-        resize_keyboard=True,
-        row_width=2
+    bot.send_message(
+        message.chat.id,
+        "🌍 Welcome to Islam Time World\n\nPlease select your language:",
+        reply_markup=language_menu()
     )
-
-    markup.add(
-        "🇺🇿 O'zbekcha", "🇷🇺 Русский",
-        "🇬🇧 English", "🇸🇦 العربية",
-        "🇹🇷 Türkçe", "🇩🇪 Deutsch",
-        "🇫🇷 Français", "🇪🇸 Español",
-        "🇮🇹 Italiano", "🇰🇿 Қазақша",
-        "🇰🇬 Кыргызча", "🇹🇯 Тоҷикӣ"
-    )
-
-    bot.send_message(message.chat.id, text, reply_markup=markup)
 
 
 @bot.message_handler(func=lambda message: message.text == "🇺🇿 O'zbekcha")
 def uzbek(message):
-    markup = types.ReplyKeyboardMarkup(
-        resize_keyboard=True,
-        row_width=2
-    )
-
-    markup.add(
-        "🕌 Namoz vaqtlari",
-        "🧭 Qibla",
-        "📍 Yaqin masjidlar",
-        "📖 Qur'on",
-        "📚 Hadislar",
-        "⚙️ Sozlamalar"
-    )
-
     bot.send_message(
         message.chat.id,
         "🇺🇿 O'zbek tili tanlandi.\n\nKerakli bo'limni tanlang:",
-        reply_markup=markup
+        reply_markup=main_menu()
+    )
+
+
+@bot.message_handler(func=lambda message: message.text == "🏠 Asosiy menyu")
+def go_main_menu(message):
+    bot.send_message(
+        message.chat.id,
+        "🏠 Asosiy menyu",
+        reply_markup=main_menu()
+    )
+
+
+@bot.message_handler(func=lambda message: message.text == "⬅️ Orqaga")
+def go_back(message):
+    bot.send_message(
+        message.chat.id,
+        "🏠 Asosiy menyu",
+        reply_markup=main_menu()
     )
 
 
@@ -396,6 +200,7 @@ def uzbek(message):
 def prayer_times(message):
     markup = types.ReplyKeyboardMarkup(
         resize_keyboard=True,
+        row_width=1,
         one_time_keyboard=True
     )
 
@@ -405,6 +210,7 @@ def prayer_times(message):
     )
 
     markup.add(location_btn)
+    markup.add("🏠 Asosiy menyu")
 
     bot.send_message(
         message.chat.id,
@@ -426,7 +232,6 @@ def location_handler(message):
         timings = data["data"]["timings"]
         date = data["data"]["date"]["readable"]
         timezone_name = data["data"]["meta"]["timezone"]
-
         location_name = get_location_name(lat, lon)
 
         tz = ZoneInfo(timezone_name)
@@ -446,7 +251,12 @@ def location_handler(message):
 
         for name, emoji, prayer_time in prayers:
             hour, minute = map(int, prayer_time.split(":")[:2])
-            prayer_datetime = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
+            prayer_datetime = now.replace(
+                hour=hour,
+                minute=minute,
+                second=0,
+                microsecond=0
+            )
 
             if prayer_datetime > now:
                 diff = prayer_datetime - now
@@ -472,8 +282,9 @@ def location_handler(message):
             minutes = (diff.seconds % 3600) // 60
             time_left_text = f"{hours} soat {minutes} daqiqadan so‘ng"
 
-        quote = random.choice(QURAN_QUOTES)
-        hadith = random.choice(HADITH_QUOTES)
+        day_index = (now.day - 1) % 31
+        quote = QURAN_QUOTES[day_index]
+        hadith = HADITH_QUOTES[day_index]
 
         text = f"""
 🕌 <b>BUGUNGI NAMOZ VAQTLARI</b>
@@ -493,11 +304,12 @@ def location_handler(message):
 
 ━━━━━━━━━━━━━━
 
-📖 <b>QUR'ONDAN OYAT</b>
+📖 <b>BUGUNGI OYAT</b>
 
 <b>"{quote["text"]}"</b>
 
 <b>{quote["source"]}</b>
+<i>({quote["note"]})</i>
 
 ━━━━━━━━━━━━━━
 
@@ -513,39 +325,142 @@ def location_handler(message):
         bot.send_message(
             message.chat.id,
             text,
-            parse_mode="HTML"
+            parse_mode="HTML",
+            reply_markup=main_menu()
         )
 
     except Exception as e:
         bot.send_message(
             message.chat.id,
-            f"❌ Kechirasiz, namoz vaqtlarini olishda xatolik yuz berdi.\n\nXato: {e}"
+            f"❌ Kechirasiz, namoz vaqtlarini olishda xatolik yuz berdi.\n\nXato: {e}",
+            reply_markup=main_menu()
         )
 
 
 @bot.message_handler(func=lambda message: message.text == "🧭 Qibla")
 def qibla(message):
-    bot.send_message(message.chat.id, "🧭 Qibla moduli keyingi bosqichda qo‘shiladi.")
+    bot.send_message(
+        message.chat.id,
+        "🧭 Qibla moduli keyingi bosqichda qo‘shiladi.",
+        reply_markup=back_menu()
+    )
 
 
 @bot.message_handler(func=lambda message: message.text == "📍 Yaqin masjidlar")
 def nearby_mosques(message):
-    bot.send_message(message.chat.id, "📍 Yaqin masjidlar moduli keyingi bosqichda qo‘shiladi.")
+    bot.send_message(
+        message.chat.id,
+        "📍 Yaqin masjidlar moduli keyingi bosqichda qo‘shiladi.",
+        reply_markup=back_menu()
+    )
 
 
 @bot.message_handler(func=lambda message: message.text == "📖 Qur'on")
 def quran(message):
-    bot.send_message(message.chat.id, "📖 Qur'on moduli keyingi bosqichda qo‘shiladi.")
+    bot.send_message(
+        message.chat.id,
+        "📖 Qur'on moduli keyingi bosqichda qo‘shiladi.",
+        reply_markup=back_menu()
+    )
 
 
 @bot.message_handler(func=lambda message: message.text == "📚 Hadislar")
 def hadith(message):
-    bot.send_message(message.chat.id, "📚 Hadislar moduli keyingi bosqichda qo‘shiladi.")
+    bot.send_message(
+        message.chat.id,
+        "📚 Hadislar moduli keyingi bosqichda qo‘shiladi.",
+        reply_markup=back_menu()
+    )
+
+
+@bot.message_handler(func=lambda message: message.text == "📿 Duolar")
+def duas(message):
+    bot.send_message(
+        message.chat.id,
+        "📿 Duolar moduli keyingi bosqichda qo‘shiladi.",
+        reply_markup=back_menu()
+    )
+
+
+@bot.message_handler(func=lambda message: message.text == "🕋 99 Ism")
+def names_99(message):
+    bot.send_message(
+        message.chat.id,
+        "🕋 Allohning 99 ismi moduli keyingi bosqichda qo‘shiladi.",
+        reply_markup=back_menu()
+    )
+
+
+@bot.message_handler(func=lambda message: message.text == "📅 Hijriy taqvim")
+def hijri_calendar(message):
+    bot.send_message(
+        message.chat.id,
+        "📅 Hijriy taqvim moduli keyingi bosqichda qo‘shiladi.",
+        reply_markup=back_menu()
+    )
 
 
 @bot.message_handler(func=lambda message: message.text == "⚙️ Sozlamalar")
 def settings(message):
-    bot.send_message(message.chat.id, "⚙️ Sozlamalar moduli keyingi bosqichda qo‘shiladi.")
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+    markup.add(
+        "🌐 Tilni o‘zgartirish",
+        "🔔 Namoz eslatmalari",
+        "📍 Lokatsiyani yangilash",
+        "🎧 Qori tanlash",
+        "🏠 Asosiy menyu"
+    )
+
+    bot.send_message(
+        message.chat.id,
+        "⚙️ Sozlamalar",
+        reply_markup=markup
+    )
+
+
+@bot.message_handler(func=lambda message: message.text == "🌐 Tilni o‘zgartirish")
+def change_language(message):
+    bot.send_message(
+        message.chat.id,
+        "🌍 Tilni tanlang:",
+        reply_markup=language_menu()
+    )
+
+
+@bot.message_handler(func=lambda message: message.text == "🔔 Namoz eslatmalari")
+def prayer_reminders(message):
+    bot.send_message(
+        message.chat.id,
+        "🔔 Namoz eslatmalari moduli keyingi bosqichda qo‘shiladi.",
+        reply_markup=back_menu()
+    )
+
+
+@bot.message_handler(func=lambda message: message.text == "📍 Lokatsiyani yangilash")
+def update_location(message):
+    bot.send_message(
+        message.chat.id,
+        "📍 Lokatsiyani yangilash uchun 🕌 Namoz vaqtlari bo‘limiga kiring.",
+        reply_markup=back_menu()
+    )
+
+
+@bot.message_handler(func=lambda message: message.text == "🎧 Qori tanlash")
+def choose_qari(message):
+    bot.send_message(
+        message.chat.id,
+        "🎧 Qori tanlash moduli keyingi bosqichda qo‘shiladi.",
+        reply_markup=back_menu()
+    )
+
+
+@bot.message_handler(func=lambda message: True)
+def unknown(message):
+    bot.send_message(
+        message.chat.id,
+        "Iltimos, menyudan kerakli bo‘limni tanlang.",
+        reply_markup=main_menu()
+    )
 
 
 def run_flask():
@@ -555,4 +470,8 @@ def run_flask():
 
 if __name__ == "__main__":
     threading.Thread(target=run_flask).start()
-    bot.infinity_polling(skip_pending=True)
+    bot.infinity_polling(
+        timeout=60,
+        long_polling_timeout=60,
+        skip_pending=True
+)
