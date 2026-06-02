@@ -38,6 +38,14 @@ QURAN_QUOTES = [
 ]
 
 
+HADITH_QUOTES = [
+    {
+        "text": "Kim bomdod namozini o‘qisa, Allohning himoyasida bo‘ladi.",
+        "source": "Sahih Muslim, 657a"
+    }
+]
+
+
 @app.route("/")
 def home():
     return "IslamTimeWorldBot is running!"
@@ -203,12 +211,14 @@ def location_handler(message):
                 second=0,
                 microsecond=0
             )
+
             diff = prayer_datetime - now
             hours = diff.seconds // 3600
             minutes = (diff.seconds % 3600) // 60
             time_left_text = f"{hours} soat {minutes} daqiqadan so‘ng"
 
         quote = random.choice(QURAN_QUOTES)
+        hadith = random.choice(HADITH_QUOTES)
 
         text = f"""
 🕌 <b>BUGUNGI NAMOZ VAQTLARI</b>
@@ -233,6 +243,14 @@ def location_handler(message):
 <b>"{quote["text"]}"</b>
 
 <b>{quote["source"]}</b>
+
+━━━━━━━━━━━━━━
+
+📿 <b>BUGUNGI HADIS</b>
+
+<b>"{hadith["text"]}"</b>
+
+<b>{hadith["source"]}</b>
 
 🤲 Alloh namozlaringizni qabul qilsin.
 """
