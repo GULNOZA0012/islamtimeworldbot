@@ -17,23 +17,158 @@ app = Flask(__name__)
 QURAN_QUOTES = [
     {
         "text": "Albatta, namoz mo‘minlarga vaqtida farz qilingandir.",
-        "source": "An-Niso surasi, 103-oyat"
+        "source": "An-Niso, 103-oyat",
+        "note": "Qisqa mazmun"
     },
     {
         "text": "Namozlarni va ayniqsa o‘rta namozni saqlanglar.",
-        "source": "Baqara surasi, 238-oyat"
+        "source": "Baqara, 238-oyat",
+        "note": "Qisqa mazmun"
     },
     {
         "text": "Meni zikr qilish uchun namozni to‘kis ado et.",
-        "source": "Toha surasi, 14-oyat"
+        "source": "Toha, 14-oyat",
+        "note": "Qisqa mazmun"
     },
     {
         "text": "Albatta, namoz fahsh va munkar ishlardan qaytaradi.",
-        "source": "Ankabut surasi, 45-oyat"
+        "source": "Ankabut, 45-oyat",
+        "note": "Qisqa mazmun"
     },
     {
         "text": "Robbingizdan yordamni sabr va namoz bilan so‘ranglar.",
-        "source": "Baqara surasi, 45-oyat"
+        "source": "Baqara, 45-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Albatta, Alloh sabr qiluvchilar bilan birgadir.",
+        "source": "Baqara, 153-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Alloh taqvodorlarni sevadi.",
+        "source": "Oli Imron, 76-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Alloh tavba qiluvchilarni sevadi.",
+        "source": "Baqara, 222-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Meni eslanglar, Men ham sizlarni eslayman.",
+        "source": "Baqara, 152-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Albatta, Alloh yaxshilik qiluvchilarni sevadi.",
+        "source": "Baqara, 195-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Albatta, qiyinchilik bilan birga yengillik bordir.",
+        "source": "Sharh, 6-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Faqat Allohni zikr qilish bilan qalblar taskin topadi.",
+        "source": "Ra'd, 28-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Kim Allohga tavakkal qilsa, U unga kifoya qiladi.",
+        "source": "Taloq, 3-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Albatta, Alloh adolatni va yaxshilikni buyuradi.",
+        "source": "Nahl, 90-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Alloh isrof qiluvchilarni sevmaydi.",
+        "source": "A'rof, 31-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Alloh sabr qiluvchilarning ajrini zoye qilmaydi.",
+        "source": "Hud, 115-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Rahmatim har narsani qamrab olgandir.",
+        "source": "A'rof, 156-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Yaxshilik qilinglar, shoyad najot topsangizlar.",
+        "source": "Haj, 77-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Duo qilinglar, Men ijobat qilaman.",
+        "source": "G'ofir, 60-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Albatta, Alloh bilan ahd qilganlarga ajr bordir.",
+        "source": "Fath, 10-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Alloh sizlar uchun yengillikni xohlaydi.",
+        "source": "Baqara, 185-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Albatta, Alloh zulm qilmaydi.",
+        "source": "Yunus, 44-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Har bir jon o‘limni totuvchidir.",
+        "source": "Oli Imron, 185-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Yaxshilik va taqvoda hamkorlik qilinglar.",
+        "source": "Moida, 2-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Alloh bilan birga bo‘linglar.",
+        "source": "Tavba, 119-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Albatta, Alloh shukr qiluvchilarni mukofotlaydi.",
+        "source": "Oli Imron, 144-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Kim bir yaxshilik qilsa, o‘n barobar mukofot oladi.",
+        "source": "An'om, 160-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Allohning rahmatidan noumid bo‘lmanglar.",
+        "source": "Zumar, 53-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Rabbingiz mag‘firati tomon shoshilinglar.",
+        "source": "Oli Imron, 133-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Albatta, Alloh mo‘minlarning do‘stidir.",
+        "source": "Oli Imron, 68-oyat",
+        "note": "Qisqa mazmun"
+    },
+    {
+        "text": "Albatta, Alloh bilan bo‘lganlar g‘olib bo‘ladilar.",
+        "source": "Moida, 56-oyat",
+        "note": "Qisqa mazmun"
     }
 ]
 
