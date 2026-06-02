@@ -1,5 +1,6 @@
 import os
 import threading
+import requests
 from flask import Flask
 import telebot
 from telebot import types
@@ -9,9 +10,11 @@ TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
 app = Flask(__name__)
 
+
 @app.route("/")
 def home():
     return "IslamTimeWorldBot is running!"
+
 
 @bot.message_handler(commands=["start"])
 def start(message):
@@ -87,10 +90,50 @@ def location_handler(message):
     lat = message.location.latitude
     lon = message.location.longitude
 
-    bot.send_message(
-        message.chat.id,
-        f"✅ Lokatsiya qabul qilindi.\n\nLatitude: {lat}\nLongitude: {lon}"
-    )
+    url = f"https://api.aladhan.com/v1/timings?latitude={lat}&longitude={lon}&method=3"
+
+    try:
+        response = requests.get(url, timeout=10)
+        data = response.json()
+
+        timings = data["data"]["timings"]
+        date = data["data"]["date"]["readable"]
+
+        text = f"""
+🕌 <b>BUGUNGI NAMOZ VAQTLARI</b>
+
+📍 <b>Joylashuv:</b> Siz yuborgan lokatsiya
+📅 <b>Sana:</b> {date}
+
+🌅 <b>Bomdod:</b> {timings["Fajr"]}
+🌄 <b>Quyosh:</b> {timings["Sunrise"]}
+🕛 <b>Peshin:</b> {timings["Dhuhr"]}
+🌇 <b>Asr:</b> {timings["Asr"]}
+🌆 <b>Shom:</b> {timings["Maghrib"]}
+🌙 <b>Xufton:</b> {timings["Isha"]}
+
+━━━━━━━━━━━━━━
+
+📖 <b>QUR'ONDAN OYAT</b>
+
+<b>"Albatta, namoz mo‘minlarga vaqtida farz qilingandir."</b>
+
+<b>An-Niso surasi, 103-oyat</b>
+
+🤲 Alloh namozlaringizni qabul qilsin.
+"""
+
+        bot.send_message(
+            message.chat.id,
+            text,
+            parse_mode="HTML"
+        )
+
+    except Exception:
+        bot.send_message(
+            message.chat.id,
+            "❌ Kechirasiz, namoz vaqtlarini olishda xatolik yuz berdi. Iltimos, qayta urinib ko‘ring."
+        )
 
 
 def run_flask():
