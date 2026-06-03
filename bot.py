@@ -554,7 +554,7 @@ def location_handler(message):
         markup = types.InlineKeyboardMarkup()
         markup.add(
             types.InlineKeyboardButton(
-                "🗺 Qibla xaritasini ochish",
+                "🧭 Qibla kompasini ochish",
                 url=maps_url
             )
         )
