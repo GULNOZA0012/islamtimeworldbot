@@ -189,6 +189,24 @@ ALLAH_NAMES = [
 user_name_index = {}
 user_hijri_date = {}
 
+
+HIJRI_MONTHS_UZ = {
+    "Muharram": "Muharram",
+    "Safar": "Safar",
+    "Rabi' al-Awwal": "Robiul-avval",
+    "Rabi' al-Thani": "Robius-soniy",
+    "Jumada al-Ula": "Jumodul-avval",
+    "Jumada al-Akhirah": "Jumodus-soniy",
+    "Rajab": "Rajab",
+    "Sha'ban": "Sha'bon",
+    "Ramadan": "Ramazon",
+    "Shawwal": "Shavvol",
+    "Dhu al-Qa'dah": "Zul-Qa'da",
+    "Dhu al-Hijjah": "Zul-Hijja",
+    "Dhū al-Ḥijjah": "Zul-Hijja"
+}
+
+
 UZ_WEEKDAYS = {
     "Monday": "Dushanba",
     "Tuesday": "Seshanba",
