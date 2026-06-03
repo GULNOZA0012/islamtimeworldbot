@@ -134,7 +134,31 @@ ALLAH_NAMES = [
 {"arabic":"الْمَجِيدُ","latin":"Al-Majid","meaning":"Sharaf va ulug‘lik egasi.","zikr":"Ya Majid"},
 {"arabic":"الْبَاعِثُ","latin":"Al-Baith","meaning":"Tirilitiruvchi Zot.","zikr":"Ya Baith"},
 {"arabic":"الشَّهِيدُ","latin":"Ash-Shahid","meaning":"Har narsaga guvoh Zot.","zikr":"Ya Shahid"},
-]
+{"arabic":"الْحَقُّ","latin":"Al-Haqq","meaning":"Mutlaq Haqiqat Zot.","zikr":"Ya Haqq"},
+{"arabic":"الْوَكِيلُ","latin":"Al-Wakil","meaning":"Ishlarni boshqaruvchi va vakil Zot.","zikr":"Ya Wakil"},
+{"arabic":"الْقَوِيُّ","latin":"Al-Qawiyy","meaning":"Cheksiz qudrat egasi.","zikr":"Ya Qawiyy"},
+{"arabic":"الْمَتِينُ","latin":"Al-Matin","meaning":"Juda mustahkam va qudratli Zot.","zikr":"Ya Matin"},
+{"arabic":"الْوَلِيُّ","latin":"Al-Waliyy","meaning":"Mo‘minlarning do‘sti va yordamchisi.","zikr":"Ya Waliyy"},
+{"arabic":"الْحَمِيدُ","latin":"Al-Hamid","meaning":"Hamd va maqtovga loyiq Zot.","zikr":"Ya Hamid"},
+{"arabic":"الْمُحْصِي","latin":"Al-Muhsi","meaning":"Har narsani sanab biluvchi Zot.","zikr":"Ya Muhsi"},
+{"arabic":"الْمُبْدِئُ","latin":"Al-Mubdi","meaning":"Yaratishni boshlovchi Zot.","zikr":"Ya Mubdi"},
+{"arabic":"الْمُعِيدُ","latin":"Al-Muid","meaning":"Qayta tiriltiruvchi Zot.","zikr":"Ya Muid"},
+{"arabic":"الْمُحْيِي","latin":"Al-Muhyi","meaning":"Hayot beruvchi Zot.","zikr":"Ya Muhyi"},
+{"arabic":"اَلْمُمِيتُ","latin":"Al-Mumit","meaning":"O‘lim beruvchi Zot.","zikr":"Ya Mumit"},
+{"arabic":"الْحَيُّ","latin":"Al-Hayy","meaning":"Abadiy tirik Zot.","zikr":"Ya Hayy"},
+{"arabic":"الْقَيُّومُ","latin":"Al-Qayyum","meaning":"Borliqni tutib turuvchi Zot.","zikr":"Ya Qayyum"},
+{"arabic":"الْوَاجِدُ","latin":"Al-Wajid","meaning":"Istagan narsasini topuvchi Zot.","zikr":"Ya Wajid"},
+{"arabic":"الْمَاجِدُ","latin":"Al-Majid","meaning":"Ulug‘lik va sharaf egasi.","zikr":"Ya Majid"},
+{"arabic":"الْواحِدُ","latin":"Al-Wahid","meaning":"Yagona Zot.","zikr":"Ya Wahid"},
+{"arabic":"اَلاَحَدُ","latin":"Al-Ahad","meaning":"Yakkayu yagona Zot.","zikr":"Ya Ahad"},
+{"arabic":"الصَّمَدُ","latin":"As-Samad","meaning":"Barcha muhtoj bo‘lgan, O‘zi hech kimga muhtoj bo‘lmagan Zot.","zikr":"Ya Samad"},
+{"arabic":"الْقَادِرُ","latin":"Al-Qadir","meaning":"Har narsaga qodir Zot.","zikr":"Ya Qadir"},
+{"arabic":"الْمُقْتَدِرُ","latin":"Al-Muqtadir","meaning":"Cheksiz qudrat egasi.","zikr":"Ya Muqtadir"},
+{"arabic":"الْمُقَدِّمُ","latin":"Al-Muqaddim","meaning":"Oldinga suruvchi Zot.","zikr":"Ya Muqaddim"},
+{"arabic":"الْمُؤَخِّرُ","latin":"Al-Muakhkhir","meaning":"Orqaga qoldiruvchi Zot.","zikr":"Ya Muakhkhir"},
+{"arabic":"الأوَّلُ","latin":"Al-Awwal","meaning":"Avvalgi Zot, boshlanishsiz.","zikr":"Ya Awwal"},
+{"arabic":"الآخِرُ","latin":"Al-Akhir","meaning":"Oxirgi Zot, tugashsiz.","zikr":"Ya Akhir"},
+{"arabic":"الظَّاهِرُ","latin":"Az-Zahir","meaning":"Alomatlari bilan zohir bo‘lgan Zot.","zikr":"Ya Zahir"},]
 
 
 user_name_index = {}
