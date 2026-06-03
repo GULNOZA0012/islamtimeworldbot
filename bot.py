@@ -83,6 +83,78 @@ HADITH_QUOTES = [
 ]
 
 
+ALLAH_NAMES = [
+{"arabic":"الرَّحْمٰنُ","latin":"Ar-Rahman","meaning":"Cheksiz mehribon, rahmati barcha maxluqotlarni qamrab olgan Zot.","zikr":"Ya Rahman"},
+{"arabic":"الرَّحِيمُ","latin":"Ar-Rahim","meaning":"Bandalariga nihoyatda rahm qiluvchi Zot.","zikr":"Ya Rahim"},
+{"arabic":"الْمَلِكُ","latin":"Al-Malik","meaning":"Barcha olamlarning haqiqiy Podshohi.","zikr":"Ya Malik"},
+{"arabic":"الْقُدُّوسُ","latin":"Al-Quddus","meaning":"Har qanday nuqsondan pok Zot.","zikr":"Ya Quddus"},
+{"arabic":"السَّلَامُ","latin":"As-Salam","meaning":"Tinchlik va omonlik beruvchi Zot.","zikr":"Ya Salam"},
+{"arabic":"الْمُؤْمِنُ","latin":"Al-Mu'min","meaning":"Omonlik va ishonch beruvchi Zot.","zikr":"Ya Mu'min"},
+{"arabic":"الْمُهَيْمِنُ","latin":"Al-Muhaymin","meaning":"Har narsani kuzatib turuvchi Zot.","zikr":"Ya Muhaymin"},
+{"arabic":"الْعَزِيزُ","latin":"Al-Aziz","meaning":"Mutlaq qudrat egasi.","zikr":"Ya Aziz"},
+{"arabic":"الْجَبَّارُ","latin":"Al-Jabbar","meaning":"Barcha ishlarni irodasi bilan amalga oshiruvchi Zot.","zikr":"Ya Jabbar"},
+{"arabic":"الْمُتَكَبِّرُ","latin":"Al-Mutakabbir","meaning":"Ulug‘lik va buyuklik egasi.","zikr":"Ya Mutakabbir"},
+{"arabic":"الْخَالِقُ","latin":"Al-Khaliq","meaning":"Yaratuvchi Zot.","zikr":"Ya Khaliq"},
+{"arabic":"الْبَارِئُ","latin":"Al-Bari","meaning":"Yo‘qdan bor qiluvchi Zot.","zikr":"Ya Bari"},
+{"arabic":"الْمُصَوِّرُ","latin":"Al-Musawwir","meaning":"Har bir narsaga surat beruvchi Zot.","zikr":"Ya Musawwir"},
+{"arabic":"الْغَفَّارُ","latin":"Al-Ghaffar","meaning":"Ko‘p mag‘firat qiluvchi Zot.","zikr":"Ya Ghaffar"},
+{"arabic":"الْقَهَّارُ","latin":"Al-Qahhar","meaning":"Hammani bo‘ysundiruvchi Zot.","zikr":"Ya Qahhar"},
+{"arabic":"الْوَهَّابُ","latin":"Al-Wahhab","meaning":"Cheksiz ne’matlar beruvchi Zot.","zikr":"Ya Wahhab"},
+{"arabic":"الرَّزَّاقُ","latin":"Ar-Razzaq","meaning":"Rizq beruvchi Zot.","zikr":"Ya Razzaq"},
+{"arabic":"الْفَتَّاحُ","latin":"Al-Fattah","meaning":"Yaxshilik eshiklarini ochuvchi Zot.","zikr":"Ya Fattah"},
+{"arabic":"اَلْعَلِيمُ","latin":"Al-Alim","meaning":"Har narsani biluvchi Zot.","zikr":"Ya Alim"},
+{"arabic":"الْقَابِضُ","latin":"Al-Qabid","meaning":"Rizqni toraytiruvchi Zot.","zikr":"Ya Qabid"},
+{"arabic":"الْبَاسِطُ","latin":"Al-Basit","meaning":"Rizqni kengaytiruvchi Zot.","zikr":"Ya Basit"},
+{"arabic":"الْخَافِضُ","latin":"Al-Khafid","meaning":"Pasaytiruvchi Zot.","zikr":"Ya Khafid"},
+{"arabic":"الرَّافِعُ","latin":"Ar-Rafi","meaning":"Yuksaltiruvchi Zot.","zikr":"Ya Rafi"},
+{"arabic":"الْمُعِزُّ","latin":"Al-Mu'izz","meaning":"Aziz qiluvchi Zot.","zikr":"Ya Mu'izz"},
+{"arabic":"الْمُذِلُّ","latin":"Al-Muzill","meaning":"Xor qiluvchi Zot.","zikr":"Ya Muzill"}
+]
+
+
+user_name_index = {}
+
+def names_menu():
+    markup = types.ReplyKeyboardMarkup(
+        resize_keyboard=True,
+        row_width=2
+    )
+    markup.add("⬅️ Oldingi", "➡️ Keyingi")
+    markup.add("🏠 Asosiy menyu")
+    return markup
+
+
+def show_allah_name(chat_id, index):
+    name = ALLAH_NAMES[index]
+    total = len(ALLAH_NAMES)
+
+    text = f"""
+🕋 <b>ASMAUL HUSNA</b>
+<i>(99 go'zal ism)</i>
+
+{index + 1}/{total}
+
+<b>{name['arabic']}</b>
+
+<b>{name['latin']}</b>
+
+<b>Ma'nosi:</b>
+{name['meaning']}
+
+📿 <b>Zikr:</b>
+{name['zikr']}
+
+<b><i>🤲 Allohni zikr qiling va ma'nosini tafakkur qiling.</i></b>
+"""
+
+    bot.send_message(
+        chat_id,
+        text,
+        parse_mode="HTML",
+        reply_markup=names_menu()
+    )
+
+
 @app.route("/")
 def home():
     return "IslamTimeWorldBot is running!"
