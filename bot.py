@@ -460,6 +460,28 @@ def names_99(message):
     show_allah_name(message.chat.id, 0)
 
 
+@bot.message_handler(func=lambda message: message.text == "➡️ Keyingi")
+def next_name(message):
+    chat_id = message.chat.id
+
+    if chat_id in user_name_index:
+        if user_name_index[chat_id] < len(ALLAH_NAMES) - 1:
+            user_name_index[chat_id] += 1
+
+        show_allah_name(chat_id, user_name_index[chat_id])
+
+
+@bot.message_handler(func=lambda message: message.text == "⬅️ Oldingi")
+def prev_name(message):
+    chat_id = message.chat.id
+
+    if chat_id in user_name_index:
+        if user_name_index[chat_id] > 0:
+            user_name_index[chat_id] -= 1
+
+        show_allah_name(chat_id, user_name_index[chat_id])
+
+
 @bot.message_handler(func=lambda message: message.text == "📅 Hijriy taqvim")
 def hijri_calendar(message):
     bot.send_message(
