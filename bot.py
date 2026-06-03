@@ -685,7 +685,27 @@ def hijri_next_day(message):
         date_obj
                     )
 
-                    
+
+@bot.message_handler(func=lambda message: message.text == "🕌 Muhim sanalar")
+def important_hijri_dates(message):
+    _, upcoming = get_next_important_date(datetime.now())
+
+    text = "🕌 <b>MUHIM ISLOMIY SANALAR</b>\n\n"
+
+    for item in upcoming[:8]:
+        text += (
+            f"{item['title']}\n"
+            f"⏳ {item['days_left']} kun qoldi\n\n"
+        )
+
+    bot.send_message(
+        message.chat.id,
+        text,
+        parse_mode="HTML",
+        reply_markup=hijri_menu()
+    )
+
+    
 @bot.message_handler(func=lambda message: message.text == "🕋 Allohning 99 ismi")
 def names_99(message):
     user_name_index[message.chat.id] = 0
