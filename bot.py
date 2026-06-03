@@ -213,7 +213,6 @@ IMPORTANT_HIJRI_DATES = [
 
 def hijri_menu():
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
-    markup.add("⬅️ Kecha", "➡️ Ertaga")
     markup.add("🕌 Muhim sanalar")
     markup.add("🏠 Asosiy menyu")
     return markup
