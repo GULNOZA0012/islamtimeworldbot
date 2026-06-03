@@ -182,7 +182,7 @@ def main_menu():
         "📖 Qur'on",
         "📚 Hadislar",
         "📿 Duolar",
-        "🕋 Allohning 99 Ismi",
+        "🕋 Allohning 99 ismi",
         "📅 Hijriy taqvim",
         "⚙️ Sozlamalar"
     )
