@@ -549,12 +549,7 @@ def location_handler(message):
     if mode == "qibla":
         angle = calculate_qibla_angle(lat, lon)
 
-        maps_url = (
-            f"https://www.google.com/maps/dir/?api=1"
-            f"&origin={lat},{lon}"
-            f"&destination={KAABA_LAT},{KAABA_LON}"
-            f"&travelmode=walking"
-        )
+        maps_url = "https://gulnoza0012.github.io/islamtimeworldbot/qibla.html"
 
         markup = types.InlineKeyboardMarkup()
         markup.add(
