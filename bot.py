@@ -229,6 +229,36 @@ IMPORTANT_HIJRI_DATES = [
 ]
 
 
+KAABA_LAT = 21.422487
+KAABA_LON = 39.826206
+
+def qibla_menu():
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
+    location_btn = types.KeyboardButton(
+        "📍 Lokatsiyani yuborish",
+        request_location=True
+    )
+    markup.add(location_btn)
+    markup.add("🏠 Asosiy menyu")
+    return markup
+
+def calculate_qibla_angle(user_lat, user_lon):
+    import math
+
+    lat1 = math.radians(user_lat)
+    lon1 = math.radians(user_lon)
+    lat2 = math.radians(KAABA_LAT)
+    lon2 = math.radians(KAABA_LON)
+
+    delta_lon = lon2 - lon1
+
+    x = math.sin(delta_lon)
+    y = math.cos(lat1) * math.tan(lat2) - math.sin(lat1) * math.cos(delta_lon)
+
+    angle = math.degrees(math.atan2(x, y))
+    return (angle + 360) % 360
+    
+
 def hijri_menu():
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
     markup.add("🕌 Muhim sanalar")
