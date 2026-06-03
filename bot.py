@@ -247,7 +247,10 @@ def get_hijri_info(date_obj):
 
     return {
         "h_day": hijri["day"],
-        "h_month": hijri["month"]["en"],
+        "h_month": HIJRI_MONTHS_UZ.get(
+    hijri["month"]["en"],
+    hijri["month"]["en"]
+),
         "h_year": hijri["year"],
         "g_date": gregorian["date"],
         "weekday": UZ_WEEKDAYS.get(gregorian["weekday"]["en"], gregorian["weekday"]["en"])
