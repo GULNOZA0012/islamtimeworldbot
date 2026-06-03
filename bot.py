@@ -187,6 +187,130 @@ ALLAH_NAMES = [
 
 
 user_name_index = {}
+user_hijri_date = {}
+
+UZ_WEEKDAYS = {
+    "Monday": "Dushanba",
+    "Tuesday": "Seshanba",
+    "Wednesday": "Chorshanba",
+    "Thursday": "Payshanba",
+    "Friday": "Juma",
+    "Saturday": "Shanba",
+    "Sunday": "Yakshanba"
+}
+
+IMPORTANT_HIJRI_DATES = [
+    {"title": "🌙 Yangi Hijriy yil", "h_month": 1, "h_day": 1},
+    {"title": "📖 Ashuro kuni", "h_month": 1, "h_day": 10},
+    {"title": "🌙 Isro va Me'roj kechasi", "h_month": 7, "h_day": 27},
+    {"title": "🌙 Barot kechasi", "h_month": 8, "h_day": 15},
+    {"title": "🌙 Ramazon boshlanishi", "h_month": 9, "h_day": 1},
+    {"title": "🎉 Iydul-Fitr", "h_month": 10, "h_day": 1},
+    {"title": "🤲 Arafa kuni", "h_month": 12, "h_day": 9},
+    {"title": "🐑 Qurbon Hayit", "h_month": 12, "h_day": 10},
+]
+
+
+def hijri_menu():
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+    markup.add("⬅️ Kecha", "➡️ Ertaga")
+    markup.add("🕌 Muhim sanalar")
+    markup.add("🏠 Asosiy menyu")
+    return markup
+
+
+def get_hijri_info(date_obj):
+    date_str = date_obj.strftime("%d-%m-%Y")
+    url = f"https://api.aladhan.com/v1/gToH?date={date_str}"
+    response = requests.get(url, timeout=10)
+    data = response.json()["data"]
+
+    hijri = data["hijri"]
+    gregorian = data["gregorian"]
+
+    return {
+        "h_day": hijri["day"],
+        "h_month": hijri["month"]["en"],
+        "h_year": hijri["year"],
+        "g_date": gregorian["date"],
+        "weekday": UZ_WEEKDAYS.get(gregorian["weekday"]["en"], gregorian["weekday"]["en"])
+    }
+
+
+def h_to_g(h_day, h_month, h_year):
+    url = f"https://api.aladhan.com/v1/hToG?date={h_day}-{h_month}-{h_year}"
+    response = requests.get(url, timeout=10)
+    data = response.json()["data"]["gregorian"]["date"]
+    return datetime.strptime(data, "%d-%m-%Y").date()
+
+
+def get_next_important_date(today):
+    hijri_info = get_hijri_info(today)
+    current_h_year = int(hijri_info["h_year"])
+
+    upcoming = []
+
+    for item in IMPORTANT_HIJRI_DATES:
+        for year in [current_h_year, current_h_year + 1]:
+            g_date = h_to_g(item["h_day"], item["h_month"], year)
+            days_left = (g_date - today.date()).days
+
+            if days_left >= 0:
+                upcoming.append({
+                    "title": item["title"],
+                    "h_day": item["h_day"],
+                    "h_month": item["h_month"],
+                    "h_year": year,
+                    "g_date": g_date,
+                    "days_left": days_left
+                })
+                break
+
+    upcoming.sort(key=lambda x: x["days_left"])
+    return upcoming[0], upcoming
+
+
+def show_hijri_calendar(chat_id, date_obj):
+    user_hijri_date[chat_id] = date_obj
+
+    info = get_hijri_info(date_obj)
+    next_event, _ = get_next_important_date(date_obj)
+
+    text = f"""
+📅 <b>HIJRIY TAQVIM</b>
+
+🌙 <b>Bugungi hijriy sana:</b>
+{info["h_day"]} {info["h_month"]} {info["h_year"]}
+
+🗓 <b>Milodiy sana:</b>
+{info["g_date"]}
+
+📆 <b>Hafta kuni:</b>
+{info["weekday"]}
+
+🕌 <b>Hijriy oy:</b>
+{info["h_month"]}
+
+📍 <b>Joylashuv:</b>
+Warszawa, Poland
+
+🤲 Alloh bugungi kuningizni barakali qilsin.
+
+━━━━━━━━━━━━━━
+
+⏳ <b>Keyingi muhim sana:</b>
+{next_event["title"]}
+📅 {next_event["h_day"]}-hijriy oy, {next_event["h_year"]}
+
+{next_event["days_left"]} kun qoldi
+"""
+
+    bot.send_message(
+        chat_id,
+        text,
+        parse_mode="HTML",
+        reply_markup=hijri_menu()
+    )
 
 def names_menu():
     markup = types.ReplyKeyboardMarkup(
