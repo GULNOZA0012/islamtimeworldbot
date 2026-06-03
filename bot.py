@@ -454,13 +454,10 @@ def duas(message):
     )
 
 
-@bot.message_handler(func=lambda message: message.text == "🕋 99 Ism")
+@bot.message_handler(func=lambda message: message.text == "🕋 Allohning 99 ismi")
 def names_99(message):
-    bot.send_message(
-        message.chat.id,
-        "🕋 Allohning 99 ismi moduli keyingi bosqichda qo‘shiladi.",
-        reply_markup=back_menu()
-    )
+    user_name_index[message.chat.id] = 0
+    show_allah_name(message.chat.id, 0)
 
 
 @bot.message_handler(func=lambda message: message.text == "📅 Hijriy taqvim")
