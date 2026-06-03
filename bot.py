@@ -637,6 +637,8 @@ def location_handler(message):
 
 @bot.message_handler(func=lambda message: message.text == "🧭 Qibla")
 def qibla(message):
+    user_mode[message.chat.id] = "qibla"
+    
     bot.send_message(
         message.chat.id,
         "🧭 <b>Qibla yo‘nalishini aniqlash</b>\n\n"
