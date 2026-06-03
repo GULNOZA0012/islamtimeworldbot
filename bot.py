@@ -130,7 +130,7 @@ def show_allah_name(chat_id, index):
 
     text = f"""
 🕋 <b>ASMAUL HUSNA</b>
-<i>(99 go'zal ism)</i>
+<i>(Allohning 99 go'zal ismi)</i>
 
 {index + 1}/{total}
 
