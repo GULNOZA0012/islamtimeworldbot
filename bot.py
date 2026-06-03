@@ -658,8 +658,11 @@ def location_handler(message):
 def qibla(message):
     bot.send_message(
         message.chat.id,
-        "🧭 Qibla moduli keyingi bosqichda qo‘shiladi.",
-        reply_markup=back_menu()
+        "🧭 <b>Qibla yo‘nalishini aniqlash</b>\n\n"
+        "Iltimos, joylashuvingizni yuboring.\n"
+        "Shunda men siz turgan joydan Ka’ba tomonga yo‘nalishni hisoblab beraman.",
+        parse_mode="HTML",
+        reply_markup=qibla_menu()
     )
 
 
