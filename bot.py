@@ -149,7 +149,7 @@ ALLAH_NAMES = [
 {"arabic":"الْحَيُّ","latin":"Al-Hayy","meaning":"Abadiy tirik Zot.","zikr":"Ya Hayy"},
 {"arabic":"الْقَيُّومُ","latin":"Al-Qayyum","meaning":"Borliqni tutib turuvchi Zot.","zikr":"Ya Qayyum"},
 {"arabic":"الْوَاجِدُ","latin":"Al-Wajid","meaning":"Istagan narsasini topuvchi Zot.","zikr":"Ya Wajid"},
-{"arabic":"الْمَاجِدُ","latin":"Al-Majid","meaning":"Ulug‘lik va sharaf egasi.","zikr":"Ya Majid"},
+{"arabic":"اَلاَحَدُ","latin":"Al-Ahad","meaning":"Yakkayu yagona Zot.","zikr":"Ya Ahad"},
 {"arabic":"الْواحِدُ","latin":"Al-Wahid","meaning":"Yagona Zot.","zikr":"Ya Wahid"},
 {"arabic":"الصَّمَدُ","latin":"As-Samad","meaning":"Barcha muhtoj bo‘lgan, O‘zi hech kimga muhtoj bo‘lmagan Zot.","zikr":"Ya Samad"},
 {"arabic":"الْقَادِرُ","latin":"Al-Qadir","meaning":"Har narsaga qodir Zot.","zikr":"Ya Qadir"},
