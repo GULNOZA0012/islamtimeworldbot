@@ -647,23 +647,6 @@ def qibla(message):
     )
 
 
-@bot.message_handler(content_types=['location'])
-def handle_qibla_location(message):
-    lat = message.location.latitude
-    lon = message.location.longitude
-
-    angle = calculate_qibla_angle(lat, lon)
-
-    bot.send_message(
-        message.chat.id,
-        f"🕋 Qibla yo‘nalishi\n\n"
-        f"📍 Sizning joylashuvingiz: {lat:.4f}, {lon:.4f}\n"
-        f"🧭 Qibla burchagi: {angle:.1f}°\n\n"
-        f"Telefon kompasini {angle:.1f}° tomonga burang."
-    )
-
-
-
 @bot.message_handler(func=lambda message: message.text == "📅 Hijriy taqvim")
 def hijri_calendar_handler(message):
     show_hijri_calendar(
