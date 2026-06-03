@@ -84,6 +84,7 @@ HADITH_QUOTES = [
 
 
 ALLAH_NAMES = [
+    {"arabic":"I","latin":"Alloh","meaning":"Barch go'zal sifatlarni jamlagan yagona haq iloh.","zikr":"Alloh"},
 {"arabic":"الرَّحْمٰنُ","latin":"Ar-Rahman","meaning":"Cheksiz mehribon, rahmati barcha maxluqotlarni qamrab olgan Zot.","zikr":"Ya Rahman"},
 {"arabic":"الرَّحِيمُ","latin":"Ar-Rahim","meaning":"Bandalariga nihoyatda rahm qiluvchi Zot.","zikr":"Ya Rahim"},
 {"arabic":"الْمَلِكُ","latin":"Al-Malik","meaning":"Barcha olamlarning haqiqiy Podshohi.","zikr":"Ya Malik"},
@@ -150,7 +151,6 @@ ALLAH_NAMES = [
 {"arabic":"الْوَاجِدُ","latin":"Al-Wajid","meaning":"Istagan narsasini topuvchi Zot.","zikr":"Ya Wajid"},
 {"arabic":"الْمَاجِدُ","latin":"Al-Majid","meaning":"Ulug‘lik va sharaf egasi.","zikr":"Ya Majid"},
 {"arabic":"الْواحِدُ","latin":"Al-Wahid","meaning":"Yagona Zot.","zikr":"Ya Wahid"},
-{"arabic":"اَلاَحَدُ","latin":"Al-Ahad","meaning":"Yakkayu yagona Zot.","zikr":"Ya Ahad"},
 {"arabic":"الصَّمَدُ","latin":"As-Samad","meaning":"Barcha muhtoj bo‘lgan, O‘zi hech kimga muhtoj bo‘lmagan Zot.","zikr":"Ya Samad"},
 {"arabic":"الْقَادِرُ","latin":"Al-Qadir","meaning":"Har narsaga qodir Zot.","zikr":"Ya Qadir"},
 {"arabic":"الْمُقْتَدِرُ","latin":"Al-Muqtadir","meaning":"Cheksiz qudrat egasi.","zikr":"Ya Muqtadir"},
