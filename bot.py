@@ -516,6 +516,7 @@ def go_back(message):
 
 @bot.message_handler(func=lambda message: message.text == "🕌 Namoz vaqtlari")
 def prayer_times(message):
+    user_mode[message.chat.id] = "prayer"
     markup = types.ReplyKeyboardMarkup(
         resize_keyboard=True,
         row_width=1,
