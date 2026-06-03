@@ -652,6 +652,40 @@ def duas(message):
     )
 
 
+@bot.message_handler(func=lambda message: message.text == "📅 Hijriy taqvim")
+def hijri_calendar_handler(message):
+    show_hijri_calendar(
+        message.chat.id,
+        datetime.now()
+    )
+
+
+@bot.message_handler(func=lambda message: message.text == "⬅️ Kecha")
+def hijri_prev_day(message):
+    date_obj = user_hijri_date.get(
+        message.chat.id,
+        datetime.now()
+    ) - timedelta(days=1)
+
+    show_hijri_calendar(
+        message.chat.id,
+        date_obj
+    )
+
+
+@bot.message_handler(func=lambda message: message.text == "➡️ Ertaga")
+def hijri_next_day(message):
+    date_obj = user_hijri_date.get(
+        message.chat.id,
+        datetime.now()
+    ) + timedelta(days=1)
+
+    show_hijri_calendar(
+        message.chat.id,
+        date_obj
+                    )
+
+                    
 @bot.message_handler(func=lambda message: message.text == "🕋 Allohning 99 ismi")
 def names_99(message):
     user_name_index[message.chat.id] = 0
