@@ -538,69 +538,104 @@ def prayer_times(message):
 
 @bot.message_handler(content_types=["location"])
 def location_handler(message):
+    chat_id = message.chat.id
     lat = message.location.latitude
     lon = message.location.longitude
 
-    try:
-        prayer_url = f"https://api.aladhan.com/v1/timings?latitude={lat}&longitude={lon}&method=2"
-        response = requests.get(prayer_url, timeout=10)
-        data = response.json()
+    mode = user_mode.get(chat_id)
 
-        timings = data["data"]["timings"]
-        date = data["data"]["date"]["readable"]
-        timezone_name = data["data"]["meta"]["timezone"]
-        location_name = get_location_name(lat, lon)
+    if mode == "qibla":
+        angle = calculate_qibla_angle(lat, lon)
 
-        tz = ZoneInfo(timezone_name)
-        now = datetime.now(tz)
+        maps_url = (
+            f"https://www.google.com/maps/dir/?api=1"
+            f"&origin={lat},{lon}"
+            f"&destination={KAABA_LAT},{KAABA_LON}"
+            f"&travelmode=walking"
+        )
 
-        prayers = [
-            ("Bomdod", "🌅", timings["Fajr"]),
-            ("Peshin", "🕛", timings["Dhuhr"]),
-            ("Asr", "🌇", timings["Asr"]),
-            ("Shom", "🌆", timings["Maghrib"]),
-            ("Xufton", "🌙", timings["Isha"]),
-        ]
+        markup = types.InlineKeyboardMarkup()
+        markup.add(
+            types.InlineKeyboardButton(
+                "🗺 Qibla xaritasini ochish",
+                url=maps_url
+            )
+        )
 
-        next_prayer_name = "Bomdod"
-        next_prayer_emoji = "🌅"
-        time_left_text = ""
+        bot.send_message(
+            chat_id,
+            f"🕋 <b>QIBLA YO‘NALISHI</b>\n\n"
+            f"📍 <b>Sizning koordinatangiz:</b>\n"
+            f"{lat:.6f}, {lon:.6f}\n\n"
+            f"🕋 <b>Ka’ba koordinatasi:</b>\n"
+            f"{KAABA_LAT}, {KAABA_LON}\n\n"
+            f"🧭 <b>Qibla burchagi:</b>\n"
+            f"{angle:.1f}°\n\n"
+            f"📌 Telefon kompasida <b>{angle:.1f}°</b> tomonga buriling.\n\n"
+            f"🗺 Xaritada Ka’ba tomonga yo‘nalishni ochish uchun pastdagi tugmani bosing.",
+            parse_mode="HTML",
+            reply_markup=markup
+        )
 
-        for name, emoji, prayer_time in prayers:
-            hour, minute = map(int, prayer_time.split(":")[:2])
-            prayer_datetime = now.replace(
-                hour=hour,
-                minute=minute,
-                second=0,
-                microsecond=0
+        user_mode.pop(chat_id, None)
+        return
+
+    if mode == "prayer":
+        try:
+            prayer_url = (
+                f"https://api.aladhan.com/v1/timings?"
+                f"latitude={lat}&longitude={lon}&method=3"
+            )
+            response = requests.get(prayer_url, timeout=10)
+            data = response.json()
+
+            timings = data["data"]["timings"]
+            date = data["data"]["date"]["readable"]
+
+            location_name = get_location_name(lat, lon)
+
+            text = f"""
+🕌 <b>BUGUNGI NAMOZ VAQTLARI</b>
+
+📍 <b>{location_name}</b>
+🗓 <b>{date}</b>
+
+🌅 <b>Bomdod:</b> {timings["Fajr"]}
+🌄 <b>Quyosh:</b> {timings["Sunrise"]}
+🕛 <b>Peshin:</b> {timings["Dhuhr"]}
+🌇 <b>Asr:</b> {timings["Asr"]}
+🌆 <b>Shom:</b> {timings["Maghrib"]}
+🌙 <b>Xufton:</b> {timings["Isha"]}
+
+🤲 Alloh namozlaringizni qabul qilsin.
+"""
+
+            bot.send_message(
+                chat_id,
+                text,
+                parse_mode="HTML",
+                reply_markup=main_menu()
             )
 
-            if prayer_datetime > now:
-                diff = prayer_datetime - now
-                hours = diff.seconds // 3600
-                minutes = (diff.seconds % 3600) // 60
-
-                next_prayer_name = name
-                next_prayer_emoji = emoji
-                time_left_text = f"{hours} soat {minutes} daqiqadan so‘ng"
-                break
-
-        if time_left_text == "":
-            hour, minute = map(int, timings["Fajr"].split(":")[:2])
-            prayer_datetime = (now + timedelta(days=1)).replace(
-                hour=hour,
-                minute=minute,
-                second=0,
-                microsecond=0
+        except Exception:
+            bot.send_message(
+                chat_id,
+                "❌ Kechirasiz, namoz vaqtlarini olishda xatolik yuz berdi.",
+                reply_markup=main_menu()
             )
 
-            diff = prayer_datetime - now
-            hours = diff.seconds // 3600
-            minutes = (diff.seconds % 3600) // 60
-            time_left_text = f"{hours} soat {minutes} daqiqadan so‘ng"
+        user_mode.pop(chat_id, None)
+        return
 
-        day_index = (now.day - 1) % 31
-        quote = QURAN_QUOTES[day_index]
+    bot.send_message(
+        chat_id,
+        "Iltimos, avval menyudan kerakli bo‘limni tanlang:\n\n"
+        "🕌 Namoz vaqtlari yoki 🧭 Qibla",
+        reply_markup=main_menu()
+    )
+
+
+QURAN_QUOTES[day_index]
         hadith = HADITH_QUOTES[day_index]
 
         text = f"""
@@ -680,42 +715,7 @@ def handle_qibla_location(message):
         f"🧭 Qibla burchagi: {angle:.1f}°\n\n"
         f"Telefon kompasini {angle:.1f}° tomonga burang."
     )
-    
 
-@bot.message_handler(func=lambda message: message.text == "📍 Yaqin masjidlar")
-def nearby_mosques(message):
-    bot.send_message(
-        message.chat.id,
-        "📍 Yaqin masjidlar moduli keyingi bosqichda qo‘shiladi.",
-        reply_markup=back_menu()
-    )
-
-
-@bot.message_handler(func=lambda message: message.text == "📖 Qur'on")
-def quran(message):
-    bot.send_message(
-        message.chat.id,
-        "📖 Qur'on moduli keyingi bosqichda qo‘shiladi.",
-        reply_markup=back_menu()
-    )
-
-
-@bot.message_handler(func=lambda message: message.text == "📚 Hadislar")
-def hadith(message):
-    bot.send_message(
-        message.chat.id,
-        "📚 Hadislar moduli keyingi bosqichda qo‘shiladi.",
-        reply_markup=back_menu()
-    )
-
-
-@bot.message_handler(func=lambda message: message.text == "📿 Duolar")
-def duas(message):
-    bot.send_message(
-        message.chat.id,
-        "📿 Duolar moduli keyingi bosqichda qo‘shiladi.",
-        reply_markup=back_menu()
-    )
 
 
 @bot.message_handler(func=lambda message: message.text == "📅 Hijriy taqvim")
