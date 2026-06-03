@@ -84,7 +84,7 @@ HADITH_QUOTES = [
 
 
 ALLAH_NAMES = [
-    {"arabic":"I","latin":"Alloh","meaning":"Barch go'zal sifatlarni jamlagan yagona haq iloh.","zikr":"Alloh"},
+    {"arabic":"I","latin":"Alloh","meaning":"Barcha go'zal sifatlarni jamlagan yagona haq iloh.","zikr":"Alloh"},
 {"arabic":"الرَّحْمٰنُ","latin":"Ar-Rahman","meaning":"Cheksiz mehribon, rahmati barcha maxluqotlarni qamrab olgan Zot.","zikr":"Ya Rahman"},
 {"arabic":"الرَّحِيمُ","latin":"Ar-Rahim","meaning":"Bandalariga nihoyatda rahm qiluvchi Zot.","zikr":"Ya Rahim"},
 {"arabic":"الْمَلِكُ","latin":"Al-Malik","meaning":"Barcha olamlarning haqiqiy Podshohi.","zikr":"Ya Malik"},
