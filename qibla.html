@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qibla Compass</title>
 
+<style>
+body{
+    font-family: Arial, sans-serif;
+    text-align:center;
+    background:#f5f5f5;
+    padding:20px;
+}
+#compass{
+    width:250px;
+    height:250px;
+    border:8px solid #2e7d32;
+    border-radius:50%;
+    margin:30px auto;
+    position:relative;
+    background:white;
+}
+#arrow{
+    position:absolute;
+    left:50%;
+    top:20px;
+    width:6px;
+    height:100px;
+    background:red;
+    transform-origin:bottom center;
+    margin-left:-3px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>🕋 Qibla Compass</h2>
+
+<div id="compass">
+    <div id="arrow"></div>
+</div>
+
+<p id="angle">Kompas yuklanmoqda...</p>
+
+<script>
+function handleOrientation(event){
+    let heading = event.alpha || 0;
+
+    document.getElementById("arrow").style.transform =
+        `rotate(${-heading}deg)`;
+
+    document.getElementById("angle").innerHTML =
+        "Kompas: " + Math.round(heading) + "°";
+}
+
+if (window.DeviceOrientationEvent){
+    window.addEventListener("deviceorientation", handleOrientation);
+}
+</script>
+
+</body>
+</html>
