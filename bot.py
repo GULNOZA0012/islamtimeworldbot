@@ -188,6 +188,7 @@ ALLAH_NAMES = [
 
 user_name_index = {}
 user_hijri_date = {}
+user_mode = {}
 
 
 HIJRI_MONTHS_UZ = {
