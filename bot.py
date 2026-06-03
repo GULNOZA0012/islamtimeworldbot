@@ -635,60 +635,6 @@ def location_handler(message):
     )
 
 
-QURAN_QUOTES[day_index]
-        hadith = HADITH_QUOTES[day_index]
-
-        text = f"""
-🕌 <b>BUGUNGI NAMOZ VAQTLARI</b>
-
-📍 <b>{location_name}</b>
-📅 <b>{date}</b>
-
-🌅 <b>Bomdod:</b> {timings["Fajr"]}
-🌄 <b>Quyosh:</b> {timings["Sunrise"]}
-🕛 <b>Peshin:</b> {timings["Dhuhr"]}
-🌇 <b>Asr:</b> {timings["Asr"]}
-🌆 <b>Shom:</b> {timings["Maghrib"]}
-🌙 <b>Xufton:</b> {timings["Isha"]}
-
-⏳ <b>Keyingi namoz:</b>
-{next_prayer_emoji} <b>{next_prayer_name}</b> — {time_left_text}
-
-━━━━━━━━━━━━━━
-
-📖 <b>BUGUNGI OYAT</b>
-
-<b>"{quote["text"]}"</b>
-
-<b>{quote["source"]}</b>
-<i>({quote["note"]})</i>
-
-━━━━━━━━━━━━━━
-
-📿 <b>BUGUNGI HADIS</b>
-
-<b>"{hadith["text"]}"</b>
-
-<b>{hadith["source"]}</b>
-
-🤲 Alloh namozlaringizni qabul qilsin.
-"""
-
-        bot.send_message(
-            message.chat.id,
-            text,
-            parse_mode="HTML",
-            reply_markup=main_menu()
-        )
-
-    except Exception as e:
-        bot.send_message(
-            message.chat.id,
-            f"❌ Kechirasiz, namoz vaqtlarini olishda xatolik yuz berdi.\n\nXato: {e}",
-            reply_markup=main_menu()
-        )
-
-
 @bot.message_handler(func=lambda message: message.text == "🧭 Qibla")
 def qibla(message):
     bot.send_message(
