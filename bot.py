@@ -836,7 +836,7 @@ if __name__ == "__main__":
     target=run_flask,
     daemon=True
 ).start()
-    bot.infinity_polling(
+ bot.infinity_polling(
         timeout=60,
         long_polling_timeout=60,
         skip_pending=True
