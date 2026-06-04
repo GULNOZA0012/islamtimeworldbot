@@ -590,7 +590,9 @@ def location_handler(message):
             date = data["data"]["date"]["readable"]
 
             location_name = get_location_name(lat, lon)
-
+if not location_name or location_name == "Siz yuborgan lokatsiya":
+    location_name = f"{lat:.4f}, {lon:.4f}"
+            
             day_index = datetime.now().day % len(QURAN_QUOTES)
 
             quote = QURAN_QUOTES[day_index]
@@ -613,11 +615,16 @@ def location_handler(message):
 
 "{quote['text']}"
 
+<b>{quote.get('source', '')}</b>
+
 ━━━━━━━━━━━━━━
 
 📿 <b>BUGUNGI HADIS</b>
 
 "{hadith['text']}"
+
+<b>{hadith.get('source', '')}</b>
+
 🤲 Alloh namozlaringizni qabul qilsin.
 """
 
