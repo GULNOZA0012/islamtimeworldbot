@@ -591,6 +591,10 @@ def location_handler(message):
 
             location_name = get_location_name(lat, lon)
 
+            day_index = datetime.now().day % len(QURAN_QUOTES)
+
+            quote = QURAN_QUOTES[day_index]
+            hadith = HADITH_QUOTES[day_index]
             text = f"""
 🕌 <b>BUGUNGI NAMOZ VAQTLARI</b>
 
