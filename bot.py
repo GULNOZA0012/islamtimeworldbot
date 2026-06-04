@@ -607,7 +607,17 @@ def location_handler(message):
 🌇 <b>Asr:</b> {timings["Asr"]}
 🌆 <b>Shom:</b> {timings["Maghrib"]}
 🌙 <b>Xufton:</b> {timings["Isha"]}
+━━━━━━━━━━━━━━
 
+📖 <b>QUR'ONDAN OYAT</b>
+
+"{quote['text']}"
+
+━━━━━━━━━━━━━━
+
+📿 <b>BUGUNGI HADIS</b>
+
+"{hadith['text']}"
 🤲 Alloh namozlaringizni qabul qilsin.
 """
 
