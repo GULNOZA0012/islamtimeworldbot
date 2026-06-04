@@ -448,7 +448,7 @@ def get_location_name(lat, lon):
             "lat": lat,
             "lon": lon,
             "format": "json",
-            "accept-language": "en"
+            "accept-language": "uz,en,pl,ru"
         }
         headers = {
             "User-Agent": "IslamTimeWorldBot/1.0"
@@ -475,7 +475,7 @@ def get_location_name(lat, lon):
         return city
 
     except Exception:
-        return "Siz yuborgan lokatsiya"
+    return "Joylashuv aniqlandi"
 
 
 @bot.message_handler(commands=["start"])
