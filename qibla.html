@@ -1,63 +1,331 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Qibla Compass</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IslamTimeWorldBot Qibla Kompasi</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
 <style>
+*{box-sizing:border-box}
 body{
-    font-family: Arial, sans-serif;
-    text-align:center;
-    background:#f5f5f5;
-    padding:20px;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#002b18;
+  color:white;
 }
-#compass{
-    width:250px;
-    height:250px;
-    border:8px solid #2e7d32;
-    border-radius:50%;
-    margin:30px auto;
-    position:relative;
-    background:white;
+.header{
+  background:linear-gradient(135deg,#003b20,#001c10);
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-#arrow{
-    position:absolute;
-    left:50%;
-    top:20px;
-    width:6px;
-    height:100px;
-    background:red;
-    transform-origin:bottom center;
-    margin-left:-3px;
+.header h1{margin:0;font-size:24px}
+.header small{color:#d8f8e0}
+.status{
+  background:#064d2b;
+  padding:10px 18px;
+  border-radius:24px;
+  color:#26ff70;
+  font-weight:bold;
+}
+#map{height:260px;width:100%}
+.panel{
+  padding:18px;
+  background:radial-gradient(circle,#064d2b,#001b0f);
+}
+.cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:14px;
+}
+.card{
+  border:1px solid #0c7a3a;
+  border-radius:18px;
+  padding:14px;
+  background:rgba(0,0,0,.25);
+}
+.card b{font-size:26px}
+.compass-wrap{
+  width:310px;
+  height:310px;
+  margin:18px auto;
+  position:relative;
+}
+.compass{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  border:8px solid #12a447;
+  background:radial-gradient(circle,#063b22,#001f12);
+  position:relative;
+  box-shadow:0 0 25px #14d65a;
+}
+.dir{
+  position:absolute;
+  font-weight:bold;
+  font-size:30px;
+  color:white;
+}
+.n{top:15px;left:50%;transform:translateX(-50%);color:#ffd700}
+.s{bottom:15px;left:50%;transform:translateX(-50%);color:#18e060}
+.e{right:20px;top:50%;transform:translateY(-50%)}
+.w{left:20px;top:50%;transform:translateY(-50%)}
+.arrow{
+  position:absolute;
+  left:50%;
+  top:45px;
+  width:34px;
+  height:190px;
+  transform-origin:50% 110px;
+  transform:translateX(-50%) rotate(0deg);
+}
+.arrow:before{
+  content:"";
+  display:block;
+  width:0;height:0;
+  margin:auto;
+  border-left:17px solid transparent;
+  border-right:17px solid transparent;
+  border-bottom:115px solid #ffd21a;
+}
+.arrow:after{
+  content:"🕋";
+  display:block;
+  font-size:34px;
+  text-align:center;
+  margin-top:-4px;
+}
+.center{
+  position:absolute;
+  width:48px;height:48px;
+  border-radius:50%;
+  background:white;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 12px #000;
+}
+.info{
+  background:rgba(0,80,35,.65);
+  border:1px solid #13a84c;
+  border-radius:18px;
+  padding:14px;
+  margin-top:12px;
+}
+.footer{
+  padding:16px;
+  font-size:14px;
+  color:#d8ffe5;
+  background:#00170d;
+  line-height:1.7;
+}
+button{
+  border:0;
+  padding:12px 18px;
+  border-radius:18px;
+  background:#0d8f3d;
+  color:white;
+  font-weight:bold;
+  font-size:16px;
 }
 </style>
 </head>
 
 <body>
 
-<h2>🕋 Qibla Compass</h2>
-
-<div id="compass">
-    <div id="arrow"></div>
+<div class="header">
+  <div>
+    <h1>🕋 Qibla Kompasi</h1>
+    <small>Ka'ba yo‘nalishini ko‘rsatkich</small>
+  </div>
+  <div class="status" id="status">Qidirilmoqda...</div>
 </div>
 
-<p id="angle">Kompas yuklanmoqda...</p>
+<div id="map"></div>
+
+<div class="panel">
+  <div class="cards">
+    <div class="card">
+      Qibla burchagi<br>
+      <b id="qiblaAngle">--°</b><br>
+      <small id="qiblaDir">Aniqlanmoqda</small>
+    </div>
+    <div class="card">
+      Ka'bagacha masofa<br>
+      <b id="distance">-- km</b><br>
+      <small>🕋 Masjid al-Harom</small>
+    </div>
+  </div>
+
+  <div class="compass-wrap">
+    <div class="compass" id="compass">
+      <div class="dir n">N</div>
+      <div class="dir s">S</div>
+      <div class="dir e">E</div>
+      <div class="dir w">W</div>
+      <div class="arrow" id="arrow"></div>
+      <div class="center"></div>
+    </div>
+  </div>
+
+  <div class="info">
+    ✅ <b>Qibla topildi</b><br>
+    Telefoningizni gorizontal ushlab, sekin aylantiring.
+  </div>
+
+  <div class="cards" style="margin-top:14px">
+    <div class="card">📍 Shahar<br><b id="city" style="font-size:18px">Aniqlanmoqda</b></div>
+    <div class="card">📌 Koordinata<br><b id="coords" style="font-size:16px">--</b></div>
+  </div>
+</div>
+
+<div class="footer">
+  <b>IslamTimeWorldBot © 2026</b><br>
+  Developer: Mumin Kuziev<br>
+  📧 muminkuziev@gmail.com<br>
+  📱 @IslamTimeWorldBotSupport
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
+const KAABA_LAT = 21.422487;
+const KAABA_LON = 39.826206;
+
+let qiblaAngle = 0;
+let map, userMarker, kaabaMarker, line;
+
+function toRad(d){ return d * Math.PI / 180; }
+function toDeg(r){ return r * 180 / Math.PI; }
+
+function calculateQibla(lat, lon){
+  const phi1 = toRad(lat);
+  const phi2 = toRad(KAABA_LAT);
+  const dLon = toRad(KAABA_LON - lon);
+
+  const y = Math.sin(dLon);
+  const x = Math.cos(phi1) * Math.tan(phi2) - Math.sin(phi1) * Math.cos(dLon);
+
+  return (toDeg(Math.atan2(y, x)) + 360) % 360;
+}
+
+function distanceKm(lat1, lon1, lat2, lon2){
+  const R = 6371;
+  const dLat = toRad(lat2-lat1);
+  const dLon = toRad(lon2-lon1);
+  const a =
+    Math.sin(dLat/2)**2 +
+    Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function directionName(angle){
+  if(angle >= 337.5 || angle < 22.5) return "Shimol";
+  if(angle < 67.5) return "Shimoliy-sharq";
+  if(angle < 112.5) return "Sharq";
+  if(angle < 157.5) return "Janubiy-sharq";
+  if(angle < 202.5) return "Janub";
+  if(angle < 247.5) return "Janubiy-g‘arb";
+  if(angle < 292.5) return "G‘arb";
+  return "Shimoliy-g‘arb";
+}
+
+function initMap(lat, lon){
+  map = L.map('map').setView([lat, lon], 5);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution:'© OpenStreetMap contributors'
+  }).addTo(map);
+
+  userMarker = L.marker([lat, lon]).addTo(map).bindPopup("Sizning joylashuvingiz");
+  kaabaMarker = L.marker([KAABA_LAT, KAABA_LON]).addTo(map).bindPopup("🕋 Ka'ba");
+  line = L.polyline([[lat, lon], [KAABA_LAT, KAABA_LON]], {
+    color:'green',
+    weight:3,
+    dashArray:'8,8'
+  }).addTo(map);
+}
+
+function updateCompass(heading){
+  const rotate = qiblaAngle - heading;
+  document.getElementById("arrow").style.transform =
+    `translateX(-50%) rotate(${rotate}deg)`;
+}
+
+function startCompass(){
+  if (typeof DeviceOrientationEvent !== "undefined" &&
+      typeof DeviceOrientationEvent.requestPermission === "function") {
+    DeviceOrientationEvent.requestPermission().then(permission => {
+      if(permission === "granted"){
+        window.addEventListener("deviceorientation", handleOrientation, true);
+      }
+    });
+  } else {
+    window.addEventListener("deviceorientationabsolute", handleOrientation, true);
+    window.addEventListener("deviceorientation", handleOrientation, true);
+  }
+}
+
 function handleOrientation(event){
-    let heading = event.alpha || 0;
+  let heading;
 
-    document.getElementById("arrow").style.transform =
-        `rotate(${-heading}deg)`;
+  if(event.webkitCompassHeading){
+    heading = event.webkitCompassHeading;
+  } else if(event.alpha !== null){
+    heading = 360 - event.alpha;
+  } else {
+    heading = 0;
+  }
 
-    document.getElementById("angle").innerHTML =
-        "Kompas: " + Math.round(heading) + "°";
+  updateCompass(heading);
 }
 
-if (window.DeviceOrientationEvent){
-    window.addEventListener("deviceorientation", handleOrientation);
+function loadLocation(){
+  if(!navigator.geolocation){
+    document.getElementById("status").innerText = "GPS ishlamayapti";
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(async pos => {
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
+
+    qiblaAngle = calculateQibla(lat, lon);
+    const dist = distanceKm(lat, lon, KAABA_LAT, KAABA_LON);
+
+    document.getElementById("qiblaAngle").innerText = qiblaAngle.toFixed(1) + "°";
+    document.getElementById("qiblaDir").innerText = directionName(qiblaAngle);
+    document.getElementById("distance").innerText = Math.round(dist).toLocaleString() + " km";
+    document.getElementById("coords").innerText = lat.toFixed(4)+"° N, "+lon.toFixed(4)+"° E";
+    document.getElementById("status").innerText = "✅ Qibla topildi";
+
+    try{
+      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
+      const data = await res.json();
+      const city = data.address.city || data.address.town || data.address.village || data.address.county || "Joylashuv";
+      const country = data.address.country || "";
+      document.getElementById("city").innerText = city + (country ? ", " + country : "");
+    }catch(e){
+      document.getElementById("city").innerText = "Joylashuv aniqlandi";
+    }
+
+    initMap(lat, lon);
+    startCompass();
+
+  }, err => {
+    document.getElementById("status").innerText = "GPS ruxsat kerak";
+    alert("Iltimos, lokatsiyaga ruxsat bering.");
+  }, {
+    enableHighAccuracy:true,
+    timeout:10000,
+    maximumAge:0
+  });
 }
+
+loadLocation();
 </script>
 
 </body>
