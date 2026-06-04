@@ -823,11 +823,19 @@ def unknown(message):
 
 def run_flask():
     port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(
+        host="0.0.0.0",
+        port=port,
+        debug=False,
+        use_reloader=False
+    )
 
 
 if __name__ == "__main__":
-    threading.Thread(target=run_flask).start()
+    threading.Thread(
+    target=run_flask,
+    daemon=True
+).start()
     bot.infinity_polling(
         timeout=60,
         long_polling_timeout=60,
