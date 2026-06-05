@@ -577,34 +577,99 @@ def location_handler(message):
         user_mode.pop(chat_id, None)
         return
 
-    if mode == "prayer":
-        try:
-            prayer_url = (
-                f"https://api.aladhan.com/v1/timings?"
-                f"latitude={lat}&longitude={lon}&method=3"
+       if mode == "prayer":
+    try:
+        prayer_url = (
+            f"https://api.aladhan.com/v1/timings?"
+            f"latitude={lat}&longitude={lon}&method=3"
+        )
+
+        response = requests.get(prayer_url, timeout=10)
+        data = response.json()
+
+        timings = data["data"]["timings"]
+        date = data["data"]["date"]["readable"]
+
+        location_name = get_location_name(lat, lon)
+
+        if not location_name or location_name == "Siz yuborgan lokatsiya":
+            location_name = f"{lat:.4f}, {lon:.4f}"
+
+        timezone_name = data["data"]["meta"]["timezone"]
+        tz = ZoneInfo(timezone_name)
+        now = datetime.now(tz)
+
+        prayers = [
+            ("Bomdod", "🌅", timings["Fajr"]),
+            ("Peshin", "🕛", timings["Dhuhr"]),
+            ("Asr", "🌇", timings["Asr"]),
+            ("Shom", "🌆", timings["Maghrib"]),
+            ("Xufton", "🌙", timings["Isha"]),
+        ]
+
+        next_prayer_name = "Bomdod"
+        next_prayer_emoji = "🌅"
+        time_left_text = ""
+
+        for name, emoji, prayer_time in prayers:
+            hour, minute = map(int, prayer_time.split(":")[:2])
+
+            prayer_datetime = now.replace(
+                hour=hour,
+                minute=minute,
+                second=0,
+                microsecond=0
             )
-            response = requests.get(prayer_url, timeout=10)
-            data = response.json()
 
-            timings = data["data"]["timings"]
-            date = data["data"]["date"]["readable"]
+            if prayer_datetime > now:
+                diff = prayer_datetime - now
 
-            location_name = get_location_name(lat, lon)
+                hours = diff.seconds // 3600
+                minutes = (diff.seconds % 3600) // 60
 
-                        if not location_name or location_name == "Siz yuborgan lokatsiya":
-                location_name = f"{lat:.4f}, {lon:.4f}"
+                next_prayer_name = name
+                next_prayer_emoji = emoji
+                time_left_text = f"{hours} soat {minutes} daqiqa"
 
-timezone_name = data["data"]["meta"]["timezone"]
-tz = ZoneInfo(timezone_name)
-now = datetime.now(tz)
+                break
 
-prayers = [
-    ("Bomdod", "🌅", timings["Fajr"]),
-    ("Peshin", "🕛", timings["Dhuhr"]),
-    ("Asr", "🌇", timings["Asr"]),
-    ("Shom", "🌆", timings["Maghrib"]),
-    ("Xufton", "🌙", timings["Isha"]),
-]
+    except Exception as e:
+        bot.send_message(
+            chat_id,
+            f"❌ Namoz vaqtlarini olishda xatolik:\n{e}"
+        )
+
+        next_prayer_name = "Bomdod"
+        next_prayer_emoji = "🌅"
+        time_left_text = ""
+
+        for name, emoji, prayer_time in prayers:
+            hour, minute = map(int, prayer_time.split(":")[:2])
+
+            prayer_datetime = now.replace(
+                hour=hour,
+                minute=minute,
+                second=0,
+                microsecond=0
+            )
+
+            if prayer_datetime > now:
+                diff = prayer_datetime - now
+
+                hours = diff.seconds // 3600
+                minutes = (diff.seconds % 3600) // 60
+
+                next_prayer_name = name
+                next_prayer_emoji = emoji
+                time_left_text = f"{hours} soat {minutes} daqiqa"
+
+                break
+
+    except Exception as e:
+        bot.send_message(
+            chat_id,
+            f"❌ Namoz vaqtlarini olishda xatolik:\n{e}"
+        )
 
 next_prayer_name = "Bomdod"
 next_prayer_emoji = "🌅"
