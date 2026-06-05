@@ -632,22 +632,6 @@ for name, emoji, prayer_time in prayers:
 if time_left_text == "":
     hour, minute = map(int, timings["Fajr"].split(":")[:2])
 
-    prayer_datetime = (now + timedelta(days=1)).replace(
-        hour=hour,
-        minute=minute,
-        second=0,
-        microsecond=0
-    )
-
-    diff = prayer_datetime - now
-    hours = diff.seconds // 3600
-    minutes = (diff.seconds % 3600) // 60
-
-    time_left_text = f"{hours} soat {minutes} daqiqadan so‘ng"
-
-day_index = now.day % len(QURAN_QUOTES)
-quote = QURAN_QUOTES[day_index]
-hadith = HADITH_QUOTES[day_index]
 
 text = f"""
 🕌 <b>BUGUNGI NAMOZ VAQTLARI</b>
