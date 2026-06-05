@@ -591,7 +591,7 @@ def location_handler(message):
 
             location_name = get_location_name(lat, lon)
 
-                if not location_name or location_name == "Siz yuborgan lokatsiya":
+                        if not location_name or location_name == "Siz yuborgan lokatsiya":
                 location_name = f"{lat:.4f}, {lon:.4f}"
 
 timezone_name = data["data"]["meta"]["timezone"]
