@@ -549,7 +549,7 @@ def location_handler(message):
     if mode == "qibla":
         angle = calculate_qibla_angle(lat, lon)
 
-        maps_url = "https://gulnoza0012.github.io/islamtimeworldbot/qibla.html"
+        maps_url = f"https://www.google.com/maps/search/?api=1&query={lat},{lon}"
 
         markup = types.InlineKeyboardMarkup()
         markup.add(
@@ -561,15 +561,8 @@ def location_handler(message):
 
         bot.send_message(
             chat_id,
-            f"🕋 <b>QIBLA YO‘NALISHI</b>\n\n"
-            f"📍 <b>Sizning koordinatangiz:</b>\n"
-            f"{lat:.6f}, {lon:.6f}\n\n"
-            f"🕋 <b>Ka’ba koordinatasi:</b>\n"
-            f"{KAABA_LAT}, {KAABA_LON}\n\n"
-            f"🧭 <b>Qibla burchagi:</b>\n"
-            f"{angle:.1f}°\n\n"
-            f"📌 Telefon kompasida <b>{angle:.1f}°</b> tomonga buriling.\n\n"
-            f"🗺 Xaritada Ka’ba tomonga yo‘nalishni ochish uchun pastdagi tugmani bosing.",
+            f"🧭 <b>Qibla yo‘nalishi:</b>\n\n"
+            f"Ka’ba tomonga burchak: <b>{angle:.2f}°</b>",
             parse_mode="HTML",
             reply_markup=markup
         )
@@ -577,35 +570,34 @@ def location_handler(message):
         user_mode.pop(chat_id, None)
         return
 
-       if mode == "prayer":
-    try:
-        prayer_url = (
-            f"https://api.aladhan.com/v1/timings?"
-            f"latitude={lat}&longitude={lon}&method=3"
-        )
+    if mode == "prayer":
+        try:
+            prayer_url = (
+                f"https://api.aladhan.com/v1/timings?"
+                f"latitude={lat}&longitude={lon}&method=3"
+            )
 
-        response = requests.get(prayer_url, timeout=10)
-        data = response.json()
+            response = requests.get(prayer_url, timeout=10)
+            data = response.json()
 
-        timings = data["data"]["timings"]
-        date = data["data"]["date"]["readable"]
+            timings = data["data"]["timings"]
+            date = data["data"]["date"]["readable"]
 
-        location_name = get_location_name(lat, lon)
+            location_name = get_location_name(lat, lon)
+            if not location_name or location_name == "Siz yuborgan lokatsiya":
+                location_name = f"{lat:.4f}, {lon:.4f}"
 
-        if not location_name or location_name == "Siz yuborgan lokatsiya":
-            location_name = f"{lat:.4f}, {lon:.4f}"
+            timezone_name = data["data"]["meta"]["timezone"]
+            tz = ZoneInfo(timezone_name)
+            now = datetime.now(tz)
 
-        timezone_name = data["data"]["meta"]["timezone"]
-        tz = ZoneInfo(timezone_name)
-        now = datetime.now(tz)
-
-        prayers = [
-            ("Bomdod", "🌅", timings["Fajr"]),
-            ("Peshin", "🕛", timings["Dhuhr"]),
-            ("Asr", "🌇", timings["Asr"]),
-            ("Shom", "🌆", timings["Maghrib"]),
-            ("Xufton", "🌙", timings["Isha"]),
-        ]
+            prayers = [
+                ("Bomdod", "🌅", timings["Fajr"]),
+                ("Peshin", "🕛", timings["Dhuhr"]),
+                ("Asr", "🌇", timings["Asr"]),
+                ("Shom", "🌆", timings["Maghrib"]),
+                ("Xufton", "🌙", timings["Isha"]),
+            ]
 
         next_prayer_name = "Bomdod"
         next_prayer_emoji = "🌅"
