@@ -590,43 +590,62 @@ def location_handler(message):
             date = data["data"]["date"]["readable"]
 
             location_name = get_location_name(lat, lon)
+
 if not location_name or location_name == "Siz yuborgan lokatsiya":
     location_name = f"{lat:.4f}, {lon:.4f}"
-            
-            day_index = datetime.now().day % len(QURAN_QUOTES)
 
-            quote = QURAN_QUOTES[day_index]
-            hadith = HADITH_QUOTES[day_index]
-            text = f"""
-🕌 <b>BUGUNGI NAMOZ VAQTLARI</b>
+timezone_name = data["data"]["meta"]["timezone"]
+tz = ZoneInfo(timezone_name)
+now = datetime.now(tz)
 
-📍 <b>{location_name}</b>
-🗓 <b>{date}</b>
+prayers = [
+    ("Bomdod", "🌅", timings["Fajr"]),
+    ("Peshin", "🕛", timings["Dhuhr"]),
+    ("Asr", "🌇", timings["Asr"]),
+    ("Shom", "🌆", timings["Maghrib"]),
+    ("Xufton", "🌙", timings["Isha"]),
+]
 
-🌅 <b>Bomdod:</b> {timings["Fajr"]}
-🌄 <b>Quyosh:</b> {timings["Sunrise"]}
-🕛 <b>Peshin:</b> {timings["Dhuhr"]}
-🌇 <b>Asr:</b> {timings["Asr"]}
-🌆 <b>Shom:</b> {timings["Maghrib"]}
-🌙 <b>Xufton:</b> {timings["Isha"]}
-━━━━━━━━━━━━━━
+next_prayer_name = "Bomdod"
+next_prayer_emoji = "🌅"
+time_left_text = ""
 
-📖 <b>QUR'ONDAN OYAT</b>
+for name, emoji, prayer_time in prayers:
+    hour, minute = map(int, prayer_time.split(":")[:2])
+    prayer_datetime = now.replace(
+        hour=hour,
+        minute=minute,
+        second=0,
+        microsecond=0
+    )
 
-"{quote['text']}"
+    if prayer_datetime > now:
+        diff = prayer_datetime - now
+        hours = diff.seconds // 3600
+        minutes = (diff.seconds % 3600) // 60
 
-<b>{quote.get('source', '')}</b>
+        next_prayer_name = name
+        next_prayer_emoji = emoji
+        time_left_text = f"{hours} soat {minutes} daqiqadan so‘ng"
+        break
 
-━━━━━━━━━━━━━━
+if time_left_text == "":
+    hour, minute = map(int, timings["Fajr"].split(":")[:2])
 
-📿 <b>BUGUNGI HADIS</b>
+    prayer_datetime = (now + timedelta(days=1)).replace(
+        hour=hour,
+        minute=minute,
+        second=0,
+        microsecond=0
+    )
 
-"{hadith['text']}"
+    diff = prayer_datetime - now
+    hours = diff.seconds // 3600
+    minutes = (diff.seconds % 3600) // 60
 
-<b>{hadith.get('source', '')}</b>
+    time_left_text = f"{hours} soat {minutes} daqiqadan so‘ng"
 
-🤲 Alloh namozlaringizni qabul qilsin.
-"""
+day_index = datetime.now().day % len(QURAN_QUOTES)
 
             bot.send_message(
                 chat_id,
