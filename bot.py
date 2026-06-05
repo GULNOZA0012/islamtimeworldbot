@@ -645,8 +645,45 @@ if time_left_text == "":
 
     time_left_text = f"{hours} soat {minutes} daqiqadan so‘ng"
 
-day_index = datetime.now().day % len(QURAN_QUOTES)
+day_index = now.day % len(QURAN_QUOTES)
+quote = QURAN_QUOTES[day_index]
+hadith = HADITH_QUOTES[day_index]
 
+text = f"""
+🕌 <b>BUGUNGI NAMOZ VAQTLARI</b>
+
+📍 <b>{location_name}</b>
+📅 <b>{date}</b>
+
+🌅 <b>Bomdod:</b> {timings["Fajr"]}
+🌄 <b>Quyosh:</b> {timings["Sunrise"]}
+🕛 <b>Peshin:</b> {timings["Dhuhr"]}
+🌇 <b>Asr:</b> {timings["Asr"]}
+🌆 <b>Shom:</b> {timings["Maghrib"]}
+🌙 <b>Xufton:</b> {timings["Isha"]}
+
+⏳ <b>Keyingi namoz:</b>
+{next_prayer_emoji} <b>{next_prayer_name}</b> — {time_left_text}
+
+━━━━━━━━━━━━━━
+
+📖 <b>BUGUNGI OYAT</b>
+
+"{quote['text']}"
+
+<b>{quote['source']}</b>
+<i>({quote['note']})</i>
+
+━━━━━━━━━━━━━━
+
+📚 <b>BUGUNGI HADIS</b>
+
+"{hadith['text']}"
+
+<b>{hadith['source']}</b>
+
+🤲 Alloh namozlaringizni qabul qilsin.
+"""
             bot.send_message(
                 chat_id,
                 text,
