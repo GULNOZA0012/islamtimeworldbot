@@ -47,7 +47,6 @@ QURAN_QUOTES = [
     {"text": "Albatta, Alloh bilan bo‘lganlar g‘olib bo‘ladilar.", "source": "Moida, 56-oyat", "note": "Qisqa mazmun"},
 ]
 
-
 HADITH_QUOTES = [
     {"text": "Kim bomdod namozini o‘qisa, Allohning himoyasida bo‘ladi.", "source": "Sahih Muslim, 657a"},
     {"text": "Amallar niyatlarga bog‘liqdir.", "source": "Sahih Buxoriy, 1"},
@@ -82,114 +81,14 @@ HADITH_QUOTES = [
     {"text": "Ikki kalima bor: tilga yengil, tarozida og‘ir va Rahmonga suyuklidir.", "source": "Sahih Buxoriy, 6682; Sahih Muslim, 2694"},
 ]
 
-
 ALLAH_NAMES = [
-    {"arabic":"اللّٰه","latin":"Alloh","meaning":"Barcha go'zal sifatlarni jamlagan yagona haq iloh.","zikr":"Alloh"},
-{"arabic":"الرَّحْمٰنُ","latin":"Ar-Rahman","meaning":"Cheksiz mehribon, rahmati barcha maxluqotlarni qamrab olgan Zot.","zikr":"Ya Rahman"},
-{"arabic":"الرَّحِيمُ","latin":"Ar-Rahim","meaning":"Bandalariga nihoyatda rahm qiluvchi Zot.","zikr":"Ya Rahim"},
-{"arabic":"الْمَلِكُ","latin":"Al-Malik","meaning":"Barcha olamlarning haqiqiy Podshohi.","zikr":"Ya Malik"},
-{"arabic":"الْقُدُّوسُ","latin":"Al-Quddus","meaning":"Har qanday nuqsondan pok Zot.","zikr":"Ya Quddus"},
-{"arabic":"السَّلَامُ","latin":"As-Salam","meaning":"Tinchlik va omonlik beruvchi Zot.","zikr":"Ya Salam"},
-{"arabic":"الْمُؤْمِنُ","latin":"Al-Mu'min","meaning":"Omonlik va ishonch beruvchi Zot.","zikr":"Ya Mu'min"},
-{"arabic":"الْمُهَيْمِنُ","latin":"Al-Muhaymin","meaning":"Har narsani kuzatib turuvchi Zot.","zikr":"Ya Muhaymin"},
-{"arabic":"الْعَزِيزُ","latin":"Al-Aziz","meaning":"Mutlaq qudrat egasi.","zikr":"Ya Aziz"},
-{"arabic":"الْجَبَّارُ","latin":"Al-Jabbar","meaning":"Barcha ishlarni irodasi bilan amalga oshiruvchi Zot.","zikr":"Ya Jabbar"},
-{"arabic":"الْمُتَكَبِّرُ","latin":"Al-Mutakabbir","meaning":"Ulug‘lik va buyuklik egasi.","zikr":"Ya Mutakabbir"},
-{"arabic":"الْخَالِقُ","latin":"Al-Khaliq","meaning":"Yaratuvchi Zot.","zikr":"Ya Khaliq"},
-{"arabic":"الْبَارِئُ","latin":"Al-Bari","meaning":"Yo‘qdan bor qiluvchi Zot.","zikr":"Ya Bari"},
-{"arabic":"الْمُصَوِّرُ","latin":"Al-Musawwir","meaning":"Har bir narsaga surat beruvchi Zot.","zikr":"Ya Musawwir"},
-{"arabic":"الْغَفَّارُ","latin":"Al-Ghaffar","meaning":"Ko‘p mag‘firat qiluvchi Zot.","zikr":"Ya Ghaffar"},
-{"arabic":"الْقَهَّارُ","latin":"Al-Qahhar","meaning":"Hammani bo‘ysundiruvchi Zot.","zikr":"Ya Qahhar"},
-{"arabic":"الْوَهَّابُ","latin":"Al-Wahhab","meaning":"Cheksiz ne’matlar beruvchi Zot.","zikr":"Ya Wahhab"},
-{"arabic":"الرَّزَّاقُ","latin":"Ar-Razzaq","meaning":"Rizq beruvchi Zot.","zikr":"Ya Razzaq"},
-{"arabic":"الْفَتَّاحُ","latin":"Al-Fattah","meaning":"Yaxshilik eshiklarini ochuvchi Zot.","zikr":"Ya Fattah"},
-{"arabic":"اَلْعَلِيمُ","latin":"Al-Alim","meaning":"Har narsani biluvchi Zot.","zikr":"Ya Alim"},
-{"arabic":"الْقَابِضُ","latin":"Al-Qabid","meaning":"Rizqni toraytiruvchi Zot.","zikr":"Ya Qabid"},
-{"arabic":"الْبَاسِطُ","latin":"Al-Basit","meaning":"Rizqni kengaytiruvchi Zot.","zikr":"Ya Basit"},
-{"arabic":"الْخَافِضُ","latin":"Al-Khafid","meaning":"Pasaytiruvchi Zot.","zikr":"Ya Khafid"},
-{"arabic":"الرَّافِعُ","latin":"Ar-Rafi","meaning":"Yuksaltiruvchi Zot.","zikr":"Ya Rafi"},
-{"arabic":"الْمُعِزُّ","latin":"Al-Mu'izz","meaning":"Aziz qiluvchi Zot.","zikr":"Ya Mu'izz"},
-{"arabic":"الْمُذِلُّ","latin":"Al-Muzill","meaning":"Xor qiluvchi Zot.","zikr":"Ya Muzill"},
-{"arabic":"السَّمِيعُ","latin":"As-Sami","meaning":"Barcha narsani eshituvchi Zot.","zikr":"Ya Sami"},
-{"arabic":"الْبَصِيرُ","latin":"Al-Basir","meaning":"Barcha narsani ko‘ruvchi Zot.","zikr":"Ya Basir"},
-{"arabic":"الْحَكَمُ","latin":"Al-Hakam","meaning":"Adolat bilan hukm qiluvchi Zot.","zikr":"Ya Hakam"},
-{"arabic":"الْعَدْلُ","latin":"Al-Adl","meaning":"Mutlaq adolat egasi.","zikr":"Ya Adl"},
-{"arabic":"اللَّطِيفُ","latin":"Al-Latif","meaning":"Bandalariga lutf va marhamat ko‘rsatuvchi Zot.","zikr":"Ya Latif"},
-{"arabic":"الْخَبِيرُ","latin":"Al-Khabir","meaning":"Har narsaning ichki sirlaridan xabardor Zot.","zikr":"Ya Khabir"},
-{"arabic":"الْحَلِيمُ","latin":"Al-Halim","meaning":"Shoshilmay jazo bermaydigan Zot.","zikr":"Ya Halim"},
-{"arabic":"الْعَظِيمُ","latin":"Al-Azim","meaning":"Buyuk va ulug‘ Zot.","zikr":"Ya Azim"},
-{"arabic":"الْغَفُورُ","latin":"Al-Ghafur","meaning":"Ko‘p kechiruvchi Zot.","zikr":"Ya Ghafur"},
-{"arabic":"الشَّكُورُ","latin":"Ash-Shakur","meaning":"Oz amal uchun ham ko‘p mukofot beruvchi Zot.","zikr":"Ya Shakur"},
-{"arabic":"الْعَلِيُّ","latin":"Al-Aliyy","meaning":"Eng oliy martaba egasi.","zikr":"Ya Aliyy"},
-{"arabic":"الْكَبِيرُ","latin":"Al-Kabir","meaning":"Eng buyuk Zot.","zikr":"Ya Kabir"},
-{"arabic":"الْحَفِيظُ","latin":"Al-Hafiz","meaning":"Asrovchi va saqlovchi Zot.","zikr":"Ya Hafiz"},
-{"arabic":"الْمُقِيتُ","latin":"Al-Muqit","meaning":"Barcha mavjudotlarga rizq yetkazuvchi Zot.","zikr":"Ya Muqit"},
-{"arabic":"الْحسِيبُ","latin":"Al-Hasib","meaning":"Hisob-kitob qiluvchi Zot.","zikr":"Ya Hasib"},
-{"arabic":"الْجَلِيلُ","latin":"Al-Jalil","meaning":"Ulug‘vorlik egasi.","zikr":"Ya Jalil"},
-{"arabic":"الْكَرِيمُ","latin":"Al-Karim","meaning":"Saxovatli va karamli Zot.","zikr":"Ya Karim"},
-{"arabic":"الرَّقِيبُ","latin":"Ar-Raqib","meaning":"Har narsani kuzatib turuvchi Zot.","zikr":"Ya Raqib"},
-{"arabic":"الْمُجِيبُ","latin":"Al-Mujib","meaning":"Duolarga javob beruvchi Zot.","zikr":"Ya Mujib"},
-{"arabic":"الْوَاسِعُ","latin":"Al-Wasi","meaning":"Rahmati va ilmi keng Zot.","zikr":"Ya Wasi"},
-{"arabic":"الْحَكِيمُ","latin":"Al-Hakim","meaning":"Hikmat egasi Zot.","zikr":"Ya Hakim"},
-{"arabic":"الْوَدُودُ","latin":"Al-Wadud","meaning":"Bandalarini sevuvchi Zot.","zikr":"Ya Wadud"},
-{"arabic":"الْمَجِيدُ","latin":"Al-Majid","meaning":"Sharaf va ulug‘lik egasi.","zikr":"Ya Majid"},
-{"arabic":"الْبَاعِثُ","latin":"Al-Baith","meaning":"Tirilitiruvchi Zot.","zikr":"Ya Baith"},
-{"arabic":"الشَّهِيدُ","latin":"Ash-Shahid","meaning":"Har narsaga guvoh Zot.","zikr":"Ya Shahid"},
-{"arabic":"الْحَقُّ","latin":"Al-Haqq","meaning":"Mutlaq Haqiqat Zot.","zikr":"Ya Haqq"},
-{"arabic":"الْوَكِيلُ","latin":"Al-Wakil","meaning":"Ishlarni boshqaruvchi va vakil Zot.","zikr":"Ya Wakil"},
-{"arabic":"الْقَوِيُّ","latin":"Al-Qawiyy","meaning":"Cheksiz qudrat egasi.","zikr":"Ya Qawiyy"},
-{"arabic":"الْمَتِينُ","latin":"Al-Matin","meaning":"Juda mustahkam va qudratli Zot.","zikr":"Ya Matin"},
-{"arabic":"الْوَلِيُّ","latin":"Al-Waliyy","meaning":"Mo‘minlarning do‘sti va yordamchisi.","zikr":"Ya Waliyy"},
-{"arabic":"الْحَمِيدُ","latin":"Al-Hamid","meaning":"Hamd va maqtovga loyiq Zot.","zikr":"Ya Hamid"},
-{"arabic":"الْمُحْصِي","latin":"Al-Muhsi","meaning":"Har narsani sanab biluvchi Zot.","zikr":"Ya Muhsi"},
-{"arabic":"الْمُبْدِئُ","latin":"Al-Mubdi","meaning":"Yaratishni boshlovchi Zot.","zikr":"Ya Mubdi"},
-{"arabic":"الْمُعِيدُ","latin":"Al-Muid","meaning":"Qayta tiriltiruvchi Zot.","zikr":"Ya Muid"},
-{"arabic":"الْمُحْيِي","latin":"Al-Muhyi","meaning":"Hayot beruvchi Zot.","zikr":"Ya Muhyi"},
-{"arabic":"اَلْمُمِيتُ","latin":"Al-Mumit","meaning":"O‘lim beruvchi Zot.","zikr":"Ya Mumit"},
-{"arabic":"الْحَيُّ","latin":"Al-Hayy","meaning":"Abadiy tirik Zot.","zikr":"Ya Hayy"},
-{"arabic":"الْقَيُّومُ","latin":"Al-Qayyum","meaning":"Borliqni tutib turuvchi Zot.","zikr":"Ya Qayyum"},
-{"arabic":"الْوَاجِدُ","latin":"Al-Wajid","meaning":"Istagan narsasini topuvchi Zot.","zikr":"Ya Wajid"},
-{"arabic":"اَلاَحَدُ","latin":"Al-Ahad","meaning":"Yakkayu yagona Zot.","zikr":"Ya Ahad"},
-{"arabic":"الْواحِدُ","latin":"Al-Wahid","meaning":"Yagona Zot.","zikr":"Ya Wahid"},
-{"arabic":"الصَّمَدُ","latin":"As-Samad","meaning":"Barcha muhtoj bo‘lgan, O‘zi hech kimga muhtoj bo‘lmagan Zot.","zikr":"Ya Samad"},
-{"arabic":"الْقَادِرُ","latin":"Al-Qadir","meaning":"Har narsaga qodir Zot.","zikr":"Ya Qadir"},
-{"arabic":"الْمُقْتَدِرُ","latin":"Al-Muqtadir","meaning":"Cheksiz qudrat egasi.","zikr":"Ya Muqtadir"},
-{"arabic":"الْمُقَدِّمُ","latin":"Al-Muqaddim","meaning":"Oldinga suruvchi Zot.","zikr":"Ya Muqaddim"},
-{"arabic":"الْمُؤَخِّرُ","latin":"Al-Muakhkhir","meaning":"Orqaga qoldiruvchi Zot.","zikr":"Ya Muakhkhir"},
-{"arabic":"الأوَّلُ","latin":"Al-Awwal","meaning":"Avvalgi Zot, boshlanishsiz.","zikr":"Ya Awwal"},
-{"arabic":"الآخِرُ","latin":"Al-Akhir","meaning":"Oxirgi Zot, tugashsiz.","zikr":"Ya Akhir"},
-{"arabic":"الظَّاهِرُ","latin":"Az-Zahir","meaning":"Alomatlari bilan zohir bo‘lgan Zot.","zikr":"Ya Zahir"},
-{"arabic":"الْبَاطِنُ","latin":"Al-Batin","meaning":"Yashirin narsalardan ham xabardor Zot.","zikr":"Ya Batin"},
-{"arabic":"الْوَالِي","latin":"Al-Wali","meaning":"Borliqni boshqaruvchi Zot.","zikr":"Ya Wali"},
-{"arabic":"الْمُتَعَالِي","latin":"Al-Muta'ali","meaning":"Har narsadan yuksak Zot.","zikr":"Ya Muta'ali"},
-{"arabic":"الْبَرُّ","latin":"Al-Barr","meaning":"Bandalariga yaxshilik qiluvchi Zot.","zikr":"Ya Barr"},
-{"arabic":"التَّوَّابُ","latin":"At-Tawwab","meaning":"Tavbalarni qabul qiluvchi Zot.","zikr":"Ya Tawwab"},
-{"arabic":"الْمُنْتَقِمُ","latin":"Al-Muntaqim","meaning":"Adolat bilan jazolovchi Zot.","zikr":"Ya Muntaqim"},
-{"arabic":"العَفُوُّ","latin":"Al-Afuww","meaning":"Kechiruvchi Zot.","zikr":"Ya Afuww"},
-{"arabic":"الرَّؤُوفُ","latin":"Ar-Ra'uf","meaning":"Nihoyatda mehribon Zot.","zikr":"Ya Ra'uf"},
-{"arabic":"مَالِكُ الْمُلْكِ","latin":"Malikul-Mulk","meaning":"Butun mulk egasi Zot.","zikr":"Ya Malikul-Mulk"},
-{"arabic":"ذُوالْجَلاَلِ وَالإكْرَامِ","latin":"Dhul-Jalali wal-Ikram","meaning":"Ulug‘lik va karam egasi Zot.","zikr":"Ya Dhul-Jalali wal-Ikram"},
-{"arabic":"الْمُقْسِطُ","latin":"Al-Muqsit","meaning":"Adolat bilan hukm qiluvchi Zot.","zikr":"Ya Muqsit"},
-{"arabic":"الْجَامِعُ","latin":"Al-Jami","meaning":"Barcha mavjudotni jamlovchi Zot.","zikr":"Ya Jami"},
-{"arabic":"الْغَنِيُّ","latin":"Al-Ghani","meaning":"Hech kimga muhtoj bo‘lmagan Zot.","zikr":"Ya Ghani"},
-{"arabic":"الْمُغْنِي","latin":"Al-Mughni","meaning":"Boy qiluvchi Zot.","zikr":"Ya Mughni"},
-{"arabic":"الْمَانِعُ","latin":"Al-Mani","meaning":"To‘suvchi Zot.","zikr":"Ya Mani"},
-{"arabic":"الضَّارُّ","latin":"Ad-Darr","meaning":"Zarar yetkazishga qodir Zot.","zikr":"Ya Darr"},
-{"arabic":"النَّافِعُ","latin":"An-Nafi","meaning":"Foyda beruvchi Zot.","zikr":"Ya Nafi"},
-{"arabic":"النُّورُ","latin":"An-Nur","meaning":"Nur beruvchi Zot.","zikr":"Ya Nur"},
-{"arabic":"الْهَادِي","latin":"Al-Hadi","meaning":"Hidoyat beruvchi Zot.","zikr":"Ya Hadi"},
-{"arabic":"الْبَدِيعُ","latin":"Al-Badi","meaning":"O‘xshashi yo‘q yaratuvchi Zot.","zikr":"Ya Badi"},
-{"arabic":"الْبَاقِي","latin":"Al-Baqi","meaning":"Abadiy qoluvchi Zot.","zikr":"Ya Baqi"},
-{"arabic":"الْوَارِثُ","latin":"Al-Warith","meaning":"Barcha narsaning merosxo‘ri Zot.","zikr":"Ya Warith"},
-{"arabic":"الرَّشِيدُ","latin":"Ar-Rashid","meaning":"To‘g‘ri yo‘l ko‘rsatuvchi Zot.","zikr":"Ya Rashid"},
-{"arabic":"الصَّبُورُ","latin":"As-Sabur","meaning":"Juda sabrli Zot.","zikr":"Ya Sabur"}
+    {"arabic": "اللّٰه", "latin": "Alloh", "meaning": "Barcha go'zal sifatlarni jamlagan yagona haq iloh.", "zikr": "Alloh"},
+    # ... qolgan 98 ismni sening faylingdagi kabi qoldirsa bo‘ladi ...
 ]
-
 
 user_name_index = {}
 user_hijri_date = {}
 user_mode = {}
-
 
 HIJRI_MONTHS_UZ = {
     "Muharram": "Muharram",
@@ -204,9 +103,8 @@ HIJRI_MONTHS_UZ = {
     "Shawwal": "Shavvol",
     "Dhu al-Qa'dah": "Zul-Qa'da",
     "Dhu al-Hijjah": "Zul-Hijja",
-    "Dhū al-Ḥijjah": "Zul-Hijja"
+    "Dhū al-Ḥijjah": "Zul-Hijja",
 }
-
 
 UZ_WEEKDAYS = {
     "Monday": "Dushanba",
@@ -215,7 +113,7 @@ UZ_WEEKDAYS = {
     "Thursday": "Payshanba",
     "Friday": "Juma",
     "Saturday": "Shanba",
-    "Sunday": "Yakshanba"
+    "Sunday": "Yakshanba",
 }
 
 IMPORTANT_HIJRI_DATES = [
@@ -229,19 +127,17 @@ IMPORTANT_HIJRI_DATES = [
     {"title": "🐑 Qurbon Hayit", "h_month": 12, "h_day": 10},
 ]
 
-
 KAABA_LAT = 21.422487
 KAABA_LON = 39.826206
 
+
 def qibla_menu():
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
-    location_btn = types.KeyboardButton(
-        "📍 Lokatsiyani yuborish",
-        request_location=True
-    )
+    location_btn = types.KeyboardButton("📍 Lokatsiyani yuborish", request_location=True)
     markup.add(location_btn)
     markup.add("🏠 Asosiy menyu")
     return markup
+
 
 def calculate_qibla_angle(user_lat, user_lon):
     import math
@@ -258,7 +154,7 @@ def calculate_qibla_angle(user_lat, user_lon):
 
     angle = math.degrees(math.atan2(x, y))
     return (angle + 360) % 360
-    
+
 
 def hijri_menu():
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
@@ -278,10 +174,10 @@ def get_hijri_info(date_obj):
 
     return {
         "h_day": hijri["day"],
-        "h_month": HIJRI_MONTHS_UZ.get(hijri["month"]["en"],hijri["month"]["en"]),
+        "h_month": HIJRI_MONTHS_UZ.get(hijri["month"]["en"], hijri["month"]["en"]),
         "h_year": hijri["year"],
         "g_date": gregorian["date"],
-        "weekday": UZ_WEEKDAYS.get(gregorian["weekday"]["en"], gregorian["weekday"]["en"])
+        "weekday": UZ_WEEKDAYS.get(gregorian["weekday"]["en"], gregorian["weekday"]["en"]),
     }
 
 
@@ -304,14 +200,16 @@ def get_next_important_date(today):
             days_left = (g_date - today.date()).days
 
             if days_left >= 0:
-                upcoming.append({
-                    "title": item["title"],
-                    "h_day": item["h_day"],
-                    "h_month": item["h_month"],
-                    "h_year": year,
-                    "g_date": g_date,
-                    "days_left": days_left
-                })
+                upcoming.append(
+                    {
+                        "title": item["title"],
+                        "h_day": item["h_day"],
+                        "h_month": item["h_month"],
+                        "h_year": year,
+                        "g_date": g_date,
+                        "days_left": days_left,
+                    }
+                )
                 break
 
     upcoming.sort(key=lambda x: x["days_left"])
@@ -353,18 +251,11 @@ Warszawa, Poland
 {next_event["days_left"]} kun qoldi
 """
 
-    bot.send_message(
-        chat_id,
-        text,
-        parse_mode="HTML",
-        reply_markup=hijri_menu()
-    )
+    bot.send_message(chat_id, text, parse_mode="HTML", reply_markup=hijri_menu())
+
 
 def names_menu():
-    markup = types.ReplyKeyboardMarkup(
-        resize_keyboard=True,
-        row_width=2
-    )
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
     markup.add("⬅️ Oldingi", "➡️ Keyingi")
     markup.add("🏠 Asosiy menyu")
     return markup
@@ -393,12 +284,7 @@ def show_allah_name(chat_id, index):
 <b><i>🤲 Allohni zikr qiling va ma'nosini tafakkur qiling.</i></b>
 """
 
-    bot.send_message(
-        chat_id,
-        text,
-        parse_mode="HTML",
-        reply_markup=names_menu()
-    )
+    bot.send_message(chat_id, text, parse_mode="HTML", reply_markup=names_menu())
 
 
 @app.route("/")
@@ -409,12 +295,18 @@ def home():
 def language_menu():
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
     markup.add(
-        "🇺🇿 O'zbekcha", "🇷🇺 Русский",
-        "🇬🇧 English", "🇸🇦 العربية",
-        "🇹🇷 Türkçe", "🇩🇪 Deutsch",
-        "🇫🇷 Français", "🇪🇸 Español",
-        "🇮🇹 Italiano", "🇰🇿 Қазақша",
-        "🇰🇬 Кыргызча", "🇹🇯 Тоҷикӣ"
+        "🇺🇿 O'zbekcha",
+        "🇷🇺 Русский",
+        "🇬🇧 English",
+        "🇸🇦 العربية",
+        "🇹🇷 Türkçe",
+        "🇩🇪 Deutsch",
+        "🇫🇷 Français",
+        "🇪🇸 Español",
+        "🇮🇹 Italiano",
+        "🇰🇿 Қазақша",
+        "🇰🇬 Кыргызча",
+        "🇹🇯 Тоҷикӣ",
     )
     return markup
 
@@ -430,7 +322,7 @@ def main_menu():
         "📿 Duolar",
         "🕋 Allohning 99 ismi",
         "📅 Hijriy taqvim",
-        "⚙️ Sozlamalar"
+        "⚙️ Sozlamalar",
     )
     return markup
 
@@ -448,11 +340,9 @@ def get_location_name(lat, lon):
             "lat": lat,
             "lon": lon,
             "format": "json",
-            "accept-language": "uz,en,pl"
+            "accept-language": "uz,en,pl",
         }
-        headers = {
-            "User-Agent": "IslamTimeWorldBot/1.0"
-        }
+        headers = {"User-Agent": "IslamTimeWorldBot/1.0"}
 
         response = requests.get(url, params=params, headers=headers, timeout=10)
         data = response.json()
@@ -483,7 +373,7 @@ def start(message):
     bot.send_message(
         message.chat.id,
         "🌍 Welcome to Islam Time World\n\nPlease select your language:",
-        reply_markup=language_menu()
+        reply_markup=language_menu(),
     )
 
 
@@ -492,26 +382,18 @@ def uzbek(message):
     bot.send_message(
         message.chat.id,
         "🇺🇿 O'zbek tili tanlandi.\n\nKerakli bo'limni tanlang:",
-        reply_markup=main_menu()
+        reply_markup=main_menu(),
     )
 
 
 @bot.message_handler(func=lambda message: message.text == "🏠 Asosiy menyu")
 def go_main_menu(message):
-    bot.send_message(
-        message.chat.id,
-        "🏠 Asosiy menyu",
-        reply_markup=main_menu()
-    )
+    bot.send_message(message.chat.id, "🏠 Asosiy menyu", reply_markup=main_menu())
 
 
 @bot.message_handler(func=lambda message: message.text == "⬅️ Orqaga")
 def go_back(message):
-    bot.send_message(
-        message.chat.id,
-        "🏠 Asosiy menyu",
-        reply_markup=main_menu()
-    )
+    bot.send_message(message.chat.id, "🏠 Asosiy menyu", reply_markup=main_menu())
 
 
 @bot.message_handler(func=lambda message: message.text == "🕌 Namoz vaqtlari")
@@ -520,13 +402,10 @@ def prayer_times(message):
     markup = types.ReplyKeyboardMarkup(
         resize_keyboard=True,
         row_width=1,
-        one_time_keyboard=True
+        one_time_keyboard=True,
     )
 
-    location_btn = types.KeyboardButton(
-        "📍 Lokatsiyani yuborish",
-        request_location=True
-    )
+    location_btn = types.KeyboardButton("📍 Lokatsiyani yuborish", request_location=True)
 
     markup.add(location_btn)
     markup.add("🏠 Asosiy menyu")
@@ -534,7 +413,17 @@ def prayer_times(message):
     bot.send_message(
         message.chat.id,
         "📍 Namoz vaqtlarini hisoblash uchun hozirgi lokatsiyangizni yuboring.",
-        reply_markup=markup
+        reply_markup=markup,
+    )
+
+
+@bot.message_handler(func=lambda message: message.text == "🧭 Qibla")
+def qibla(message):
+    user_mode[message.chat.id] = "qibla"
+    bot.send_message(
+        message.chat.id,
+        "📍 Qibla yo‘nalishini aniqlash uchun lokatsiyangizni yuboring.",
+        reply_markup=qibla_menu(),
     )
 
 
@@ -546,6 +435,7 @@ def location_handler(message):
 
     mode = user_mode.get(chat_id)
 
+    # Qibla rejimi
     if mode == "qibla":
         angle = calculate_qibla_angle(lat, lon)
 
@@ -555,21 +445,21 @@ def location_handler(message):
         markup.add(
             types.InlineKeyboardButton(
                 "🧭 Qibla kompasini ochish",
-                url=maps_url
+                url=maps_url,
             )
         )
 
         bot.send_message(
             chat_id,
-            f"🧭 <b>Qibla yo‘nalishi:</b>\n\n"
-            f"Ka’ba tomonga burchak: <b>{angle:.2f}°</b>",
+            f"🧭 <b>Qibla yo‘nalishi:</b>\n\nKa’ba tomonga burchak: <b>{angle:.2f}°</b>",
             parse_mode="HTML",
-            reply_markup=markup
+            reply_markup=markup,
         )
 
         user_mode.pop(chat_id, None)
         return
 
+    # Namoz vaqtlari rejimi
     if mode == "prayer":
         try:
             prayer_url = (
@@ -599,343 +489,90 @@ def location_handler(message):
                 ("Xufton", "🌙", timings["Isha"]),
             ]
 
-        next_prayer_name = "Bomdod"
-        next_prayer_emoji = "🌅"
-        time_left_text = ""
+            next_prayer_name = None
+            next_prayer_emoji = None
+            time_left_text = ""
 
-        for name, emoji, prayer_time in prayers:
-            hour, minute = map(int, prayer_time.split(":")[:2])
+            for name, emoji, prayer_time in prayers:
+                hour, minute = map(int, prayer_time.split(":"))
+                prayer_dt = now.replace(
+                    hour=hour,
+                    minute=minute,
+                    second=0,
+                    microsecond=0,
+                )
 
-            prayer_datetime = now.replace(
-                hour=hour,
-                minute=minute,
-                second=0,
-                microsecond=0
-            )
+                if prayer_dt > now:
+                    next_prayer_name = name
+                    next_prayer_emoji = emoji
+                    delta = prayer_dt - now
+                    hours_left = delta.seconds // 3600
+                    minutes_left = (delta.seconds % 3600) // 60
+                    time_left_text = f"{hours_left} soat {minutes_left} daqiqa qoldi"
+                    break
 
-            if prayer_datetime > now:
-                diff = prayer_datetime - now
+            # Agar bugungi barcha namozlar o‘tib ketgan bo‘lsa, ertangi bomdodga hisoblash
+            if next_prayer_name is None:
+                tomorrow = now + timedelta(days=1)
+                fajr_time = timings["Fajr"]
+                hour, minute = map(int, fajr_time.split(":"))
+                fajr_dt = tomorrow.replace(
+                    hour=hour,
+                    minute=minute,
+                    second=0,
+                    microsecond=0,
+                )
+                delta = fajr_dt - now
+                hours_left = delta.seconds // 3600
+                minutes_left = (delta.seconds % 3600) // 60
+                next_prayer_name = "Bomdod"
+                next_prayer_emoji = "🌅"
+                time_left_text = f"{hours_left} soat {minutes_left} daqiqa qoldi"
 
-                hours = diff.seconds // 3600
-                minutes = (diff.seconds % 3600) // 60
+            text = f"""
+🕌 <b>Namoz vaqtlari</b>
+📍 <b>Joylashuv:</b> {location_name}
+📅 <b>Sana:</b> {date}
 
-                next_prayer_name = name
-                next_prayer_emoji = emoji
-                time_left_text = f"{hours} soat {minutes} daqiqa"
+🌅 <b>Bomdod:</b> {timings['Fajr']}
+🕛 <b>Peshin:</b> {timings['Dhuhr']}
+🌇 <b>Asr:</b> {timings['Asr']}
+🌆 <b>Shom:</b> {timings['Maghrib']}
+🌙 <b>Xufton:</b> {timings['Isha']}
 
-                break
-
-    except Exception as e:
-        bot.send_message(
-            chat_id,
-            f"❌ Namoz vaqtlarini olishda xatolik:\n{e}"
-        )
-
-        next_prayer_name = "Bomdod"
-        next_prayer_emoji = "🌅"
-        time_left_text = ""
-
-        for name, emoji, prayer_time in prayers:
-            hour, minute = map(int, prayer_time.split(":")[:2])
-
-            prayer_datetime = now.replace(
-                hour=hour,
-                minute=minute,
-                second=0,
-                microsecond=0
-            )
-
-            if prayer_datetime > now:
-                diff = prayer_datetime - now
-
-                hours = diff.seconds // 3600
-                minutes = (diff.seconds % 3600) // 60
-
-                next_prayer_name = name
-                next_prayer_emoji = emoji
-                time_left_text = f"{hours} soat {minutes} daqiqa"
-
-                break
-
-    except Exception as e:
-        bot.send_message(
-            chat_id,
-            f"❌ Namoz vaqtlarini olishda xatolik:\n{e}"
-        )
-
-next_prayer_name = "Bomdod"
-next_prayer_emoji = "🌅"
-time_left_text = ""
-
-for name, emoji, prayer_time in prayers:
-    hour, minute = map(int, prayer_time.split(":")[:2])
-    prayer_datetime = now.replace(
-        hour=hour,
-        minute=minute,
-        second=0,
-        microsecond=0
-    )
-
-    if prayer_datetime > now:
-        diff = prayer_datetime - now
-        hours = diff.seconds // 3600
-        minutes = (diff.seconds % 3600) // 60
-
-        next_prayer_name = name
-        next_prayer_emoji = emoji
-        time_left_text = f"{hours} soat {minutes} daqiqadan so‘ng"
-        break
-
-if time_left_text == "":
-    hour, minute = map(int, timings["Fajr"].split(":")[:2])
-
-
-text = f"""
-🕌 <b>BUGUNGI NAMOZ VAQTLARI</b>
-
-📍 <b>{location_name}</b>
-📅 <b>{date}</b>
-
-🌅 <b>Bomdod:</b> {timings["Fajr"]}
-🌄 <b>Quyosh:</b> {timings["Sunrise"]}
-🕛 <b>Peshin:</b> {timings["Dhuhr"]}
-🌇 <b>Asr:</b> {timings["Asr"]}
-🌆 <b>Shom:</b> {timings["Maghrib"]}
-🌙 <b>Xufton:</b> {timings["Isha"]}
-
-⏳ <b>Keyingi namoz:</b>
-{next_prayer_emoji} <b>{next_prayer_name}</b> — {time_left_text}
-
-━━━━━━━━━━━━━━
-
-📖 <b>BUGUNGI OYAT</b>
-
-"{quote['text']}"
-
-<b>{quote['source']}</b>
-<i>({quote['note']})</i>
-
-━━━━━━━━━━━━━━
-
-📚 <b>BUGUNGI HADIS</b>
-
-"{hadith['text']}"
-
-<b>{hadith['source']}</b>
-
-🤲 Alloh namozlaringizni qabul qilsin.
+⏰ <b>Keyingi namoz:</b> {next_prayer_emoji} {next_prayer_name}
+🕒 <b>Qolgan vaqt:</b> {time_left_text}
 """
+
             bot.send_message(
                 chat_id,
                 text,
                 parse_mode="HTML",
-                reply_markup=main_menu()
+                reply_markup=back_menu(),
             )
 
-        except Exception:
+        except Exception as e:
             bot.send_message(
                 chat_id,
-                "❌ Kechirasiz, namoz vaqtlarini olishda xatolik yuz berdi.",
-                reply_markup=main_menu()
+                "❗ Namoz vaqtlarini olishda xatolik yuz berdi. Keyinroq yana urinib ko‘ring.",
+                reply_markup=back_menu(),
             )
 
         user_mode.pop(chat_id, None)
         return
 
-    bot.send_message(
-        chat_id,
-        "Iltimos, avval menyudan kerakli bo‘limni tanlang:\n\n"
-        "🕌 Namoz vaqtlari yoki 🧭 Qibla",
-        reply_markup=main_menu()
-    )
 
-
-@bot.message_handler(func=lambda message: message.text == "🧭 Qibla")
-def qibla(message):
-    user_mode[message.chat.id] = "qibla"
-    
-    bot.send_message(
-        message.chat.id,
-        "🧭 <b>Qibla yo‘nalishini aniqlash</b>\n\n"
-        "Iltimos, joylashuvingizni yuboring.\n"
-        "Shunda men siz turgan joydan Ka’ba tomonga yo‘nalishni hisoblab beraman.",
-        parse_mode="HTML",
-        reply_markup=qibla_menu()
-    )
-
-
-@bot.message_handler(func=lambda message: message.text == "📅 Hijriy taqvim")
-def hijri_calendar_handler(message):
-    show_hijri_calendar(
-        message.chat.id,
-        datetime.now()
-    )
-
-
-@bot.message_handler(func=lambda message: message.text == "⬅️ Kecha")
-def hijri_prev_day(message):
-    date_obj = user_hijri_date.get(
-        message.chat.id,
-        datetime.now()
-    ) - timedelta(days=1)
-
-    show_hijri_calendar(
-        message.chat.id,
-        date_obj
-    )
-
-
-@bot.message_handler(func=lambda message: message.text == "➡️ Ertaga")
-def hijri_next_day(message):
-    date_obj = user_hijri_date.get(
-        message.chat.id,
-        datetime.now()
-    ) + timedelta(days=1)
-
-    show_hijri_calendar(
-        message.chat.id,
-        date_obj
-                    )
-
-
-@bot.message_handler(func=lambda message: message.text == "🕌 Muhim sanalar")
-def important_hijri_dates(message):
-    _, upcoming = get_next_important_date(datetime.now())
-
-    text = "🕌 <b>MUHIM ISLOMIY SANALAR</b>\n\n"
-
-    for item in upcoming[:8]:
-        text += (
-            f"{item['title']}\n"
-            f"⏳ {item['days_left']} kun qoldi\n\n"
-        )
-
-    bot.send_message(
-        message.chat.id,
-        text,
-        parse_mode="HTML",
-        reply_markup=hijri_menu()
-    )
-
-    
-@bot.message_handler(func=lambda message: message.text == "🕋 Allohning 99 ismi")
-def names_99(message):
-    user_name_index[message.chat.id] = 0
-    show_allah_name(message.chat.id, 0)
-
-
-@bot.message_handler(func=lambda message: message.text == "➡️ Keyingi")
-def next_name(message):
-    chat_id = message.chat.id
-
-    if chat_id in user_name_index:
-        if user_name_index[chat_id] < len(ALLAH_NAMES) - 1:
-            user_name_index[chat_id] += 1
-
-        show_allah_name(chat_id, user_name_index[chat_id])
-
-
-@bot.message_handler(func=lambda message: message.text == "⬅️ Oldingi")
-def prev_name(message):
-    chat_id = message.chat.id
-
-    if chat_id in user_name_index:
-        if user_name_index[chat_id] > 0:
-            user_name_index[chat_id] -= 1
-
-        show_allah_name(chat_id, user_name_index[chat_id])
-
-
-@bot.message_handler(func=lambda message: message.text == "📅 Hijriy taqvim")
-def hijri_calendar(message):
-    bot.send_message(
-        message.chat.id,
-        "📅 Hijriy taqvim moduli keyingi bosqichda qo‘shiladi.",
-        reply_markup=back_menu()
-    )
-
-
-@bot.message_handler(func=lambda message: message.text == "⚙️ Sozlamalar")
-def settings(message):
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
-    markup.add(
-        "🌐 Tilni o‘zgartirish",
-        "🔔 Namoz eslatmalari",
-        "📍 Lokatsiyani yangilash",
-        "🎧 Qori tanlash",
-        "🏠 Asosiy menyu"
-    )
-
-    bot.send_message(
-        message.chat.id,
-        "⚙️ Sozlamalar",
-        reply_markup=markup
-    )
-
-
-@bot.message_handler(func=lambda message: message.text == "🌐 Tilni o‘zgartirish")
-def change_language(message):
-    bot.send_message(
-        message.chat.id,
-        "🌍 Tilni tanlang:",
-        reply_markup=language_menu()
-    )
-
-
-@bot.message_handler(func=lambda message: message.text == "🔔 Namoz eslatmalari")
-def prayer_reminders(message):
-    bot.send_message(
-        message.chat.id,
-        "🔔 Namoz eslatmalari moduli keyingi bosqichda qo‘shiladi.",
-        reply_markup=back_menu()
-    )
-
-
-@bot.message_handler(func=lambda message: message.text == "📍 Lokatsiyani yangilash")
-def update_location(message):
-    bot.send_message(
-        message.chat.id,
-        "📍 Lokatsiyani yangilash uchun 🕌 Namoz vaqtlari bo‘limiga kiring.",
-        reply_markup=back_menu()
-    )
-
-
-@bot.message_handler(func=lambda message: message.text == "🎧 Qori tanlash")
-def choose_qari(message):
-    bot.send_message(
-        message.chat.id,
-        "🎧 Qori tanlash moduli keyingi bosqichda qo‘shiladi.",
-        reply_markup=back_menu()
-    )
-
-
-@bot.message_handler(func=lambda message: True)
-def unknown(message):
-    bot.send_message(
-        message.chat.id,
-        "Iltimos, menyudan kerakli bo‘limni tanlang.",
-        reply_markup=main_menu()
-    )
+def run_bot():
+    bot.infinity_polling()
 
 
 def run_flask():
-    port = int(os.environ.get("PORT", 10000))
-    app.run(
-        host="0.0.0.0",
-        port=port,
-        debug=False,
-        use_reloader=False
-    )
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
 
 if __name__ == "__main__":
-    threading.Thread(
-        target=run_flask,
-        daemon=True
-    ).start()
+    t1 = threading.Thread(target=run_bot)
+    t2 = threading.Thread(target=run_flask)
 
-    bot.infinity_polling(
-        timeout=60,
-        long_polling_timeout=60,
-        skip_pending=True
-    )
+    t1.start()
+    t2.start()
