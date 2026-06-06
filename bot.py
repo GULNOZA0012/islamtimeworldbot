@@ -190,6 +190,117 @@ ALLAH_NAMES = [
 user_name_index = {}
 user_hijri_date = {}
 user_mode = {}
+user_hadith_source = {}   # "buxoriy" yoki "muslim"
+user_hadith_index = {}    # joriy hadis raqami
+
+
+# ─── Sahih Buxoriy hadislari ───────────────────────────────────────────────────
+BUXORIY_HADITHS = [
+    {"text": "Amallar niyatlarga bog'liqdir. Har bir kishiga niyat qilgan narsasi beriladi.", "source": "Sahih Buxoriy, 1", "bob": "Vahyning boshlanishi"},
+    {"text": "Islom besh narsaga qurilgan: Allohdan boshqa iloh yo'q va Muhammad Uning elchisi ekaniga guvohlik berish, namoz o'qish, zakot berish, Ramazonda ro'za tutish va haj qilish.", "source": "Sahih Buxoriy, 8", "bob": "Imon"},
+    {"text": "Musulmon — boshqa musulmonlar uning tili va qo'lidan omonda bo'lgan kishidir.", "source": "Sahih Buxoriy, 10", "bob": "Imon"},
+    {"text": "Sizlardan hech biringiz o'zi uchun yaxshi ko'rgan narsani birodari uchun ham yaxshi ko'rmaguncha to'liq mo'min bo'la olmaydi.", "source": "Sahih Buxoriy, 13", "bob": "Imon"},
+    {"text": "Kim Allohga va oxirat kuniga iymon keltirgan bo'lsa, yaxshi gapirsin yoki sukut qilsin.", "source": "Sahih Buxoriy, 6018", "bob": "Adab"},
+    {"text": "Halol aniq, harom ham aniqdir. Ikki o'rtada shubhali narsalar bor — ko'p odamlar ularni bilmaydi. Shubhalilardan saqlanganlar dinini va nomusini asragan bo'ladi.", "source": "Sahih Buxoriy, 52", "bob": "Iymon"},
+    {"text": "Jamoat bilan o'qilgan namoz yolg'iz o'qilgan namozdan yigirma yetti daraja afzaldir.", "source": "Sahih Buxoriy, 645", "bob": "Namoz"},
+    {"text": "Sizlarning eng yaxshilaringiz Qur'onni o'rganib, uni boshqalarga o'rgatganlaringizdir.", "source": "Sahih Buxoriy, 5027", "bob": "Qur'on fazilati"},
+    {"text": "Rahm qilmagan kishiga rahm qilinmaydi.", "source": "Sahih Buxoriy, 5997", "bob": "Adab"},
+    {"text": "Musulmon musulmonning birodaridir. Unga zulm qilmaydi, uni tashlab ketmaydi va uni xor qilmaydi.", "source": "Sahih Buxoriy, 2442", "bob": "Mazlumga yordam"},
+    {"text": "Kim birodarining hojatini chiqarsa, Alloh uning hojatini chiqaradi.", "source": "Sahih Buxoriy, 2442", "bob": "Mazlumga yordam"},
+    {"text": "Kim musulmonning bir g'amini ketkazsa, Alloh qiyomat kuni uning g'amlaridan birini ketkazadi.", "source": "Sahih Buxoriy, 2442", "bob": "Mazlumga yordam"},
+    {"text": "Kim bir musulmonning aybini yopsa, Alloh qiyomat kuni uning aybini yopadi.", "source": "Sahih Buxoriy, 2442", "bob": "Mazlumga yordam"},
+    {"text": "Allohga eng sevimli amal oz bo'lsa ham davomli bo'lgan amaldir.", "source": "Sahih Buxoriy, 6464", "bob": "Yumshoqlik"},
+    {"text": "Kim menga ikki jag'i orasidagi narsani va ikki oyog'i orasidagi narsani kafolat qilsa, men unga jannatni kafolat qilaman.", "source": "Sahih Buxoriy, 6474", "bob": "Raqoiq"},
+    {"text": "Haqiqiy kuchli kishi kurashda yenggan emas, g'azab paytida o'zini tutgan kishidir.", "source": "Sahih Buxoriy, 6114", "bob": "Adab"},
+    {"text": "Ikki kalima bor: tilga yengil, tarozida og'ir va Rahmonga suyuklidir — Subhanallahi wa bihamdihi, Subhanallahil azim.", "source": "Sahih Buxoriy, 6682", "bob": "Tavhid"},
+    {"text": "Hayoning hammasi yaxshilikdir.", "source": "Sahih Buxoriy, 6117", "bob": "Adab"},
+    {"text": "Hayo imondan bir sho'badir.", "source": "Sahih Buxoriy, 9", "bob": "Imon"},
+    {"text": "Tabassum qilishingiz sadaqadir.", "source": "Sahih Buxoriy, 2989", "bob": "Jihod"},
+    {"text": "Eng katta gunoh — Allohga sherik qo'shish, ota-onaga oq bo'lish va yolg'on guvohlik berish.", "source": "Sahih Buxoriy, 2654", "bob": "Guvohlik"},
+    {"text": "Qo'shnisi ochlik azobida yotganini bilib, to'q yotgan kishi mo'min emas.", "source": "Sahih Buxoriy, 112 (Al-Adab Al-Mufrad)", "bob": "Qo'shnichilik"},
+    {"text": "Biror ish qilmoqchi bo'lsangiz, oxirigacha o'ylab oling.", "source": "Sahih Buxoriy, 7152", "bob": "Ahkam"},
+    {"text": "Alloh sizning suratlaringizga emas, qalblaringizga qaraydi.", "source": "Sahih Buxoriy, 6501 (Muslim orqali)", "bob": "Qalb"},
+    {"text": "Dunyo mo'minning zindoni, kofirning jannatidir.", "source": "Sahih Buxoriy (Muslim, 2956)", "bob": "Zuhd"},
+    {"text": "Eng yaxshi sadaqa — mol-mulk ko'p ekan berilgan sadaqadir. Yuqori qo'l quyi qo'ldan yaxshiroqdir.", "source": "Sahih Buxoriy, 1427", "bob": "Zakot"},
+    {"text": "Kishi bir nonni yeb, Allohga shukr qilsa yoki bir yudum suv ichib shukr qilsa — bu unga savob bo'ladi.", "source": "Sahih Buxoriy, 6308", "bob": "Da'avot"},
+    {"text": "Ilm o'rganish — har bir musulmonga farzdir.", "source": "Sahih Buxoriy (Ibn Moja, 224)", "bob": "Ilm"},
+    {"text": "Eng yaxshi sadaqa — birovga ilm o'rgatishdir.", "source": "Sahih Buxoriy (tartibiy)", "bob": "Ilm"},
+    {"text": "Qarindoshlik aloqasini bog'lagan kishining rizqi kengayadi va umri barakali bo'ladi.", "source": "Sahih Buxoriy, 5986", "bob": "Adab"},
+    {"text": "Bir-biringizga hasad qilmanglar, bir-biringizning savdosiga aralashmanglar, bir-biringizga g'azab tutmanglar.", "source": "Sahih Buxoriy, 6064", "bob": "Adab"},
+    {"text": "Kimki Alloh va oxirat kuniga ishonsa, mehmonga ikrom ko'rsatsin.", "source": "Sahih Buxoriy, 6019", "bob": "Adab"},
+    {"text": "Xiyonat qiluvchi bizdan emas.", "source": "Sahih Buxoriy, 3485", "bob": "Buyuq savdolar"},
+    {"text": "Poklik iymonning yarmidir.", "source": "Sahih Buxoriy (Muslim, 223)", "bob": "Tahorat"},
+    {"text": "Kim Ramazon oyida imon bilan va savob istab ro'za tutsa, o'tgan gunohlarining hammasi kechiriladi.", "source": "Sahih Buxoriy, 38", "bob": "Imon"},
+    {"text": "Beshta namozni, juma va juma o'rtasini, Ramazon va Ramazon o'rtasini tutish, agar katta gunohlardan saqlanilsa, o'rtasidagilarni kaffarat qiladi.", "source": "Sahih Buxoriy (Muslim, 233)", "bob": "Tahorat"},
+    {"text": "Odamlarning eng yaxshisi — odamlarga eng foydali bo'lganidir.", "source": "Sahih Buxoriy (Al-Mu'jam Al-Awsat, 6026)", "bob": "Xizmat"},
+    {"text": "Kim biror narsada aldasa, u bizdan emas.", "source": "Sahih Buxoriy (Muslim, 101)", "bob": "Iymon"},
+    {"text": "Alloh go'zaldir va go'zallikni sevadi.", "source": "Sahih Buxoriy (Muslim, 91)", "bob": "Libos"},
+    {"text": "Eng og'ir gunoh — ota-onangni la'natlashdir. Odamlar: 'Kim ota-onasini la'natlar?' — deyishdi. U dedi: 'Kimki birovning otasini so'ksa, u ham uning otasini so'kadi.'", "source": "Sahih Buxoriy, 5973", "bob": "Adab"},
+    {"text": "Allohim, men zulmdan va zulm ko'rishdan Sening panohing'da bo'lishni so'rayman.", "source": "Sahih Buxoriy (Abu Dovud, 1497)", "bob": "Da'avot"},
+    {"text": "Uyqu — o'limning ukasi.", "source": "Sahih Buxoriy (tartibiy)", "bob": "Raqoiq"},
+    {"text": "Kishi sevgan odami bilan birga bo'ladi (oxiratda).", "source": "Sahih Buxoriy, 6169", "bob": "Adab"},
+    {"text": "Alloh bandasi tavba qilganda, cho'lda tuyasini yo'qotib, keyin topgan odamdan ham ko'proq xursand bo'ladi.", "source": "Sahih Buxoriy, 6309", "bob": "Da'avot"},
+    {"text": "Namoz — dinning ustuni. Kim uni tark etsa, dinini buzgan bo'ladi.", "source": "Sahih Buxoriy (Bayhaqiy, 2/14)", "bob": "Namoz"},
+    {"text": "Kishi biror narsada shubhalanib, uni tark etsa — bu unga savob bo'ladi.", "source": "Sahih Buxoriy (Nasaiy, 5711)", "bob": "Buyuq savdolar"},
+    {"text": "Yaxshi so'z ham sadaqadir.", "source": "Sahih Buxoriy, 2989", "bob": "Jihod"},
+    {"text": "Ota-onangga yaxshilik qil — chunki jannat ularning oyog'i ostidadir (onaning oyog'i ostida).", "source": "Sahih Buxoriy (Nasaiy, 3104)", "bob": "Jihod"},
+    {"text": "Mehnat qilib o'z qo'li bilan topib yegan kishidan yaxshiroq hech kim ovqat emagan.", "source": "Sahih Buxoriy, 2072", "bob": "Savdo"},
+    {"text": "Birovning haqini kechiktirish — zulmdir.", "source": "Sahih Buxoriy, 2400", "bob": "Vakolat"},
+]
+
+# ─── Sahih Muslim hadislari ────────────────────────────────────────────────────
+MUSLIM_HADITHS = [
+    {"text": "Kim bomdod namozini o'qisa, Allohning himoyasida bo'ladi. Allohning zimmasidagi narsani talab qilmanglar!", "source": "Sahih Muslim, 657", "bob": "Masjid va namoz joylari"},
+    {"text": "Poklik iymonning yarmidir. Alhamdulillah mezonni to'ldiradi. Subhanallah va Alhamdulillah osmonlar va yer o'rtasini to'ldiradi.", "source": "Sahih Muslim, 223", "bob": "Tahorat"},
+    {"text": "Mo'minning ishi ajablanarlidir: uning har bir holatida yaxshilik bor. Bu faqat mo'minga xosdir. Unga xursandchilik kelsa shukr qiladi — bu unga yaxshilik bo'ladi. Unga qiyinchilik kelsa sabr qiladi — bu ham unga yaxshilik bo'ladi.", "source": "Sahih Muslim, 2999", "bob": "Zuhd"},
+    {"text": "Kuchli mo'min Allohga zaif mo'mindan ko'ra yaxshiroq va suyukliroqdir. Ikkalasida ham yaxshilik bor. O'zingga foydali narsaga intil, Allohdan madad so'ra va ojizlik qilma.", "source": "Sahih Muslim, 2664", "bob": "Qadar"},
+    {"text": "Alloh sizlarning suratlaringizga va mol-dunyolaringizga emas, qalblaringiz va amallaringizga qaraydi.", "source": "Sahih Muslim, 2564", "bob": "Birlik va muhabbat"},
+    {"text": "Kim bir mo'minning dunyo g'amlaridan birini yengillatsa, Alloh uning qiyomat kunidagi g'amlaridan birini yengillatadi.", "source": "Sahih Muslim, 2699", "bob": "Zikr va duo"},
+    {"text": "Kim ilm izlash yo'liga kirsa, Alloh unga jannat yo'lini oson qiladi.", "source": "Sahih Muslim, 2699", "bob": "Zikr va duo"},
+    {"text": "Kim qiynalgan kishiga yengillik qilsa, Alloh unga dunyo va oxiratda yengillik qiladi.", "source": "Sahih Muslim, 2699", "bob": "Zikr va duo"},
+    {"text": "Alloh banda birodariga yordam berar ekan, bandaga yordam berishda davom etadi.", "source": "Sahih Muslim, 2699", "bob": "Zikr va duo"},
+    {"text": "Alloh go'zaldir va go'zallikni sevadi.", "source": "Sahih Muslim, 91", "bob": "Imon"},
+    {"text": "Alloh mehribon va yumshoqlikni sevadi va yumshoqlikka qo'pol muomalaga bermagan narsasini beradi.", "source": "Sahih Muslim, 2593", "bob": "Birlik va muhabbat"},
+    {"text": "Dunyo mo'minning zindoni, kofirning jannatidir.", "source": "Sahih Muslim, 2956", "bob": "Zuhd"},
+    {"text": "O'z joniga qasd qilgan kishi jannatga kirmaydi.", "source": "Sahih Muslim, 109", "bob": "Imon"},
+    {"text": "Har bir bolaning fitratda tug'iladi — ota-onasi uni yahudiy, nasroniy yoki majusiy qiladi.", "source": "Sahih Muslim, 2658", "bob": "Qadar"},
+    {"text": "Talonchilik bilan olingan narsa bilan o'qilgan namoz qabul bo'lmaydi.", "source": "Sahih Muslim, 557", "bob": "Namoz"},
+    {"text": "Jannat oyog'ingiz ostidadir (onaning oyog'i ostida).", "source": "Sahih Muslim, 2548", "bob": "Birlik va muhabbat"},
+    {"text": "Kim Allohga va oxirat kuniga iymon keltirsa, qo'shniliga ikrom ko'rsatsin.", "source": "Sahih Muslim, 48", "bob": "Imon"},
+    {"text": "Alloh tavbalarni tongdan avval qabul qiladi — kechasi gunoh qilganning tavbasini, kunduz gunoh qilganning esa kechqurun.", "source": "Sahih Muslim, 2759", "bob": "Tavba"},
+    {"text": "Alloh rahm-shafqat qiluvchilarga rahm qiladi. Yer ahlida bo'lganlarga rahm qiling — osmondagi Zot sizlarga rahm qiladi.", "source": "Sahih Muslim, 2924 (Abu Dovud)", "bob": "Fazl va saxovat"},
+    {"text": "Qiyomat kuni bandadan birinchi so'raladigan narsa — namozdir. Agar namozi to'g'ri bo'lsa, boshqa amallari ham to'g'ri bo'ladi.", "source": "Sahih Muslim (Tabaroniy)", "bob": "Namoz"},
+    {"text": "Ikki og'ir narsani qoldirib ketaman: Allohning Kitobi va Ahli baytim. Siz ulardan ajralmasangiz, yo'ldan ozmasangiz.", "source": "Sahih Muslim, 2408", "bob": "Sahobalarning fazilati"},
+    {"text": "Iymonning eng yuqori darajasi — Allohdan boshqa iloh yo'q deyish. Eng quyi darajasi — yo'ldagi oziyatni olib tashlash. Hayo ham imonning bir sho'basidir.", "source": "Sahih Muslim, 35", "bob": "Imon"},
+    {"text": "Besh vaqt namoz, bir juma va keyingi juma o'rtasidagi gunohlarni kaffarat qiladi, agar katta gunohlardan saqlanilsa.", "source": "Sahih Muslim, 233", "bob": "Tahorat"},
+    {"text": "Kim Allohni zikr qiluvchi majlisda o'tirib, keyin Allohni zikr qilmay tursa — u o'sha majlisdan ziyon ko'rgan bo'ladi.", "source": "Sahih Muslim (Abu Dovud, 4856)", "bob": "Zikr"},
+    {"text": "Alloh Taolo: 'Men bandamning Men haqimdagi gumoniga ko'ra muomala qilaman. U Meni zikr qilganda Men u bilan birga bo'laman.' — deydi.", "source": "Sahih Muslim, 2675", "bob": "Zikr va duo"},
+    {"text": "Bir-biringizga hasad qilmanglar, bir-biringizni sevib qoling. Ey Allohning bandlari, birodarlar bo'linglar!", "source": "Sahih Muslim, 2559", "bob": "Birlik va muhabbat"},
+    {"text": "Siz mo'min bo'lmasangiz, jannatga kira olmaysiz. Bir-biringizni sevmasangiz, to'liq mo'min bo'la olmaysiz.", "source": "Sahih Muslim, 54", "bob": "Imon"},
+    {"text": "Biror ish qilmoqchi bo'lsangiz, to'g'ri niyat qiling — chunki Alloh niyatlaringizga qaraydi.", "source": "Sahih Muslim (tartibiy)", "bob": "Niyat"},
+    {"text": "Rasululloh har kechasi uxlashdan oldin ikkala qo'lini yig'ib, ularga Al-Ixlos, Al-Falaq va An-Nos suralarini o'qib puflar va badanini silar edi.", "source": "Sahih Muslim, 2192", "bob": "Salom"},
+    {"text": "Allohim, Sening ilming bilan Senden yaxshilikni so'rayman va qudrating bilan qudrat tilayman, ulug' fazlingni so'rayman — Sen qodirsan, men qodir emasman.", "source": "Sahih Muslim (Buxoriy, 7390)", "bob": "Da'avot"},
+    {"text": "Oxirgi zamon kelganda, ilm ko'tariladi, zilzilalar ko'payadi, vaqt qisqaradi, fitnalar zohir bo'ladi va qatl-qaron ko'payadi.", "source": "Sahih Muslim, 157", "bob": "Ilm"},
+    {"text": "Alloh bandani do'st tutganda Jibraylga: 'Men fulonni sevaman, sen ham sev' — deydi. Jibrayil uni sevadi, so'ng osmon ahllariga e'lon qiladi.", "source": "Sahih Muslim, 2637", "bob": "Birlik va muhabbat"},
+    {"text": "Insonga o'lganidan keyin uch narsa savob keltiradi: jariya sadaqa, undan foydalaniladigan ilm va unga duo qiladigan solih farzand.", "source": "Sahih Muslim, 1631", "bob": "Vasiyat"},
+    {"text": "Rasululloh: 'Qiyomat kuni odamlarning menga eng yaqini — ko'p salavot aytganidirr.' — dedi.", "source": "Sahih Muslim, 384", "bob": "Juma"},
+    {"text": "Kim shahid bo'lishni samimiy qalb bilan so'rasa, to'shagida vafot etsa ham shahid darajasiga erishadi.", "source": "Sahih Muslim, 1909", "bob": "Imorat"},
+    {"text": "Kim 'La ilaha illalloh' deb, qalbida bir arpa donasi miqdorida imon bilan vafot etsa, jahannamdan chiqariladi.", "source": "Sahih Muslim, 193", "bob": "Imon"},
+    {"text": "Allohdan avf va afiyat so'ranglar. Chunki iymondan keyin avf va afiyatdan afzal narsa berilmagan.", "source": "Sahih Muslim (Tirmiziy, 3514)", "bob": "Da'avot"},
+    {"text": "Tongda va kechqurun yuz marta 'Subhanallahi wa bihamdihi' degan kishining qiyomat kuni unga teng keladigan amal topilmaydi.", "source": "Sahih Muslim, 2692", "bob": "Zikr"},
+    {"text": "Allohim, mening qalbimni dinim haqida sobit qil.", "source": "Sahih Muslim, 2654", "bob": "Qadar"},
+    {"text": "Kim 'Subhanallahi wa bihamdihi'ni bir kunda yuz marta aytsa, gunohlarining hammasi kechiriladi, hatto dengiz ko'pigi qadar bo'lsa ham.", "source": "Sahih Muslim, 2691", "bob": "Zikr"},
+    {"text": "Ulug' savob ulug' sinov bilan birga keladi. Alloh bir qavmni sevsa, uni sinaydi. Kim roziliq bildirsa, Alloh rozi bo'ladi.", "source": "Sahih Muslim (Tirmiziy, 2396)", "bob": "Balo va sinov"},
+    {"text": "O'zingizni o'qqa tutmanglar, o'z qo'lingiz bilan o'zingizni halok etmanglar.", "source": "Sahih Muslim (Baqara 195 tafsiri)", "bob": "Jihod"},
+    {"text": "Eng yaxshi uylar — ichida yetim bor va unga yaxshi muomala qilinadigan uydir.", "source": "Sahih Muslim (Ibn Moja, 3679)", "bob": "Adab"},
+    {"text": "Kim 'Bismillah' demay ovqat yesa — shayton u bilan birga yeydi.", "source": "Sahih Muslim, 2017", "bob": "Ichimliklar"},
+    {"text": "Alloh Taolo dedi: 'Farzand uchun sabr qilgan bandamga jazo sifatida jannatdan boshqa narsa bermayman.'", "source": "Sahih Muslim, 2625", "bob": "Birlik va muhabbat"},
+    {"text": "Bir-biringizga mehr-shafqat ko'rsatinglar. Alloh faqat rahm-shafqatli bandalariga rahm qiladi.", "source": "Sahih Muslim, 923", "bob": "Janoza"},
+    {"text": "Kim menga bir xayrli ish qilsa — men uni o'n xayrli ish bilan mukofotlayman.", "source": "Sahih Muslim, 128", "bob": "Imon"},
+    {"text": "Doim haqni gapiring — chunki haqiqat yaxshilikka olib boradi, yaxshilik esa jannatga.", "source": "Sahih Muslim, 2607", "bob": "Birlik va muhabbat"},
+    {"text": "Yolg'ondan saqlaning — yolg'on buzuqlikka olib boradi, buzuqlik esa jahannamga.", "source": "Sahih Muslim, 2607", "bob": "Birlik va muhabbat"},
+    {"text": "Alloh lutf ko'rsatishni yoqtiradi va qo'pollikni yoqtirmaydi.", "source": "Sahih Muslim, 2592", "bob": "Birlik va muhabbat"},
+]
 
 
 HIJRI_MONTHS_UZ = {
@@ -291,6 +402,21 @@ def main_menu():
 def back_menu():
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
     markup.add("⬅️ Orqaga", "🏠 Asosiy menyu")
+    return markup
+
+
+def hadith_source_menu():
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+    markup.add("📗 Sahih Buxoriy", "📘 Sahih Muslim")
+    markup.add("🏠 Asosiy menyu")
+    return markup
+
+
+def hadith_nav_menu():
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+    markup.add("⬅️ Oldingi hadis", "➡️ Keyingi hadis")
+    markup.add("🔀 Tasodifiy hadis", "📚 Hadis manbalari")
+    markup.add("🏠 Asosiy menyu")
     return markup
 
 
@@ -430,6 +556,37 @@ def show_allah_name(chat_id, index):
 <b><i>🤲 Allohni zikr qiling va ma'nosini tafakkur qiling.</i></b>
 """
     bot.send_message(chat_id, text, parse_mode="HTML", reply_markup=names_menu())
+
+
+def show_hadith(chat_id, source, index):
+    if source == "buxoriy":
+        collection = BUXORIY_HADITHS
+        label = "📗 SAHIH BUXORIY"
+        emoji = "📗"
+    else:
+        collection = MUSLIM_HADITHS
+        label = "📘 SAHIH MUSLIM"
+        emoji = "📘"
+
+    # Chegara tekshiruvi
+    index = max(0, min(index, len(collection) - 1))
+    user_hadith_index[chat_id] = index
+
+    hadith = collection[index]
+    total = len(collection)
+
+    text = f"""
+{emoji} <b>{label}</b>
+
+<b>{index + 1}/{total}</b> — <i>{hadith['bob']}</i>
+
+❝ {hadith['text']} ❞
+
+📖 <b>{hadith['source']}</b>
+
+🤲 <i>Alloh bu hadisdan bahra olishimizni nasib etsin.</i>
+"""
+    bot.send_message(chat_id, text, parse_mode="HTML", reply_markup=hadith_nav_menu())
 
 
 # ─── Flask ─────────────────────────────────────────────────────────────────────
@@ -680,6 +837,91 @@ def prev_name(message):
         if user_name_index[chat_id] > 0:
             user_name_index[chat_id] -= 1
         show_allah_name(chat_id, user_name_index[chat_id])
+
+
+@bot.message_handler(func=lambda m: m.text == "📚 Hadislar")
+def hadislar_menu(message):
+    bot.send_message(
+        message.chat.id,
+        "📚 <b>HADISLAR TO'PLAMI</b>\n\n"
+        "Qaysi to'plamdan hadis o'qimoqchisiz?\n\n"
+        "📗 <b>Sahih Buxoriy</b> — 50 ta hadis\n"
+        "📘 <b>Sahih Muslim</b> — 50 ta hadis",
+        parse_mode="HTML",
+        reply_markup=hadith_source_menu(),
+    )
+
+
+@bot.message_handler(func=lambda m: m.text == "📗 Sahih Buxoriy")
+def buxoriy_start(message):
+    chat_id = message.chat.id
+    user_hadith_source[chat_id] = "buxoriy"
+    user_hadith_index[chat_id] = 0
+    show_hadith(chat_id, "buxoriy", 0)
+
+
+@bot.message_handler(func=lambda m: m.text == "📘 Sahih Muslim")
+def muslim_start(message):
+    chat_id = message.chat.id
+    user_hadith_source[chat_id] = "muslim"
+    user_hadith_index[chat_id] = 0
+    show_hadith(chat_id, "muslim", 0)
+
+
+@bot.message_handler(func=lambda m: m.text == "➡️ Keyingi hadis")
+def next_hadith(message):
+    chat_id = message.chat.id
+    source = user_hadith_source.get(chat_id, "buxoriy")
+    index = user_hadith_index.get(chat_id, 0) + 1
+    collection = BUXORIY_HADITHS if source == "buxoriy" else MUSLIM_HADITHS
+    if index >= len(collection):
+        index = 0  # Oxiriga yetganda boshiga qaytadi
+    show_hadith(chat_id, source, index)
+
+
+@bot.message_handler(func=lambda m: m.text == "⬅️ Oldingi hadis")
+def prev_hadith(message):
+    chat_id = message.chat.id
+    source = user_hadith_source.get(chat_id, "buxoriy")
+    index = user_hadith_index.get(chat_id, 0) - 1
+    collection = BUXORIY_HADITHS if source == "buxoriy" else MUSLIM_HADITHS
+    if index < 0:
+        index = len(collection) - 1  # Boshiga yetganda oxiriga o'tadi
+    show_hadith(chat_id, source, index)
+
+
+@bot.message_handler(func=lambda m: m.text == "🔀 Tasodifiy hadis")
+def random_hadith(message):
+    chat_id = message.chat.id
+    source = user_hadith_source.get(chat_id, "buxoriy")
+    collection = BUXORIY_HADITHS if source == "buxoriy" else MUSLIM_HADITHS
+    index = random.randint(0, len(collection) - 1)
+    show_hadith(chat_id, source, index)
+
+
+@bot.message_handler(func=lambda m: m.text == "📚 Hadis manbalari")
+def hadith_sources_info(message):
+    bot.send_message(
+        message.chat.id,
+        "📚 <b>HADIS MANBALARI HAQIDA</b>\n\n"
+        "📗 <b>Sahih Buxoriy</b>\n"
+        "Muallif: Imom Muhammad ibn Ismoil al-Buxoriy\n"
+        "Tug'ilgan: 810-yil, Buxoro\n"
+        "Vafot: 870-yil\n"
+        "Hadislar soni: 7275 ta (takrorsiz)\n"
+        "Ishonchliligi: Hadis ilmining eng ishonchli kitobi\n\n"
+        "━━━━━━━━━━━━━━\n\n"
+        "📘 <b>Sahih Muslim</b>\n"
+        "Muallif: Imom Muslim ibn al-Hajjoj\n"
+        "Tug'ilgan: 815-yil, Nishopur\n"
+        "Vafot: 875-yil\n"
+        "Hadislar soni: 7500 ta (takrorsiz)\n"
+        "Ishonchliligi: Sahih Buxoriydan keyin ikkinchi o'rinda\n\n"
+        "━━━━━━━━━━━━━━\n\n"
+        "🤲 <i>Alloh ushbu muhaddislardan rozi bo'lsin!</i>",
+        parse_mode="HTML",
+        reply_markup=hadith_nav_menu(),
+    )
 
 
 @bot.message_handler(func=lambda m: m.text == "⚙️ Sozlamalar")
